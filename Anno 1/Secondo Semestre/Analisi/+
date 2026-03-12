@@ -1,0 +1,20 @@
+\documentclass[12pt]{report}
+
+\usepackage{xcolor}
+\usepackage[italian]{babel}
+\usepackage{amsmath, amsthm}
+
+\usepackage{mdframed}
+\mdfsetup{skipabove=1em,skipbelow=0em}
+\theoremstyle{definition}
+\newmdtheoremenv[nobreak=true]{defn}{Definizione}
+\newmdtheoremenv[nobreak=true]{prop}{Proposizione}
+\newmdtheoremenv[nobreak=true]{lem}{Lemma}
+\newtheorem{ex}{Esempio}
+
+\newmdtheoremenv[nobreak=true]{notaz}[*]{Notazione}
+\newtheorem*{ex*}{Esempio}
+\newtheorem*{propr}{Proprietà}
+
+\theoremstyle{remark}
+\newtheorem*{oss}{Osservazione}
