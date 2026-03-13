@@ -3,8 +3,179 @@
 \begin{document}
 \chapter{Serie Numeriche}\label{chap:serie_numeriche} % (fold)
 \section{Serie di Potenze}\label{sec:serie_di_potenze} % (fold)
+\subsection{Applicazioni delle serie di potenze}\label{sub:raggio_di_convergenza} % (fold)
+Ricapitolando:\\
+Data una serie $\sum_{n=0}^{\infty}a_n(x-x_0)^n$, noi vogliamo trovare il raggio di convergenza $\rho\in[0,+\infty]$. Trovato $\rho$ sappiamo che:
+
+\begin{itemize}
+  \item La serie converge $\forall x\in(x_0-\rho,x_0+\rho)$
+  \item La serie non converge se $x>x_0+\rho$ o $x<x_0-\rho$
+  \item Dobbiamo controllare se converge per $x=x_0-\rho$ e $x=x_0+\rho$
+\end{itemize}
+
+Abbiamo anche visto come calcolare $\rho$:
+\begin{itemize}
+  \item $\lim{n\to+\infty}\sqrt[n]{|a_n|} = l \implies \rho=\begin{cases}
+    0, &\text{ se }l=+\infty\\
+    +\infty &\text{ se }l=0\\
+    \frac{1}{l} &\text{ se }l\in(0,+\infty)
+  \end{cases}$
+\item ecc.
+\end{itemize}
+
+Abbiamo anche visto che le serie di potenze sono derivabili \textit{infinite volte} nel loro raggio di convergenza.
+
+\begin{esempio}[Esercizio]
+  \begin{displaymath}
+    S(x)=\displaystyle\sum_{n=0}^{\infty}(n+a)(x-1)^n
+  \end{displaymath}
+  \begin{itemize}
+    \item Dire per quali $x$ la serie converge
+    \item Calcolare $S^{(5)}(1)$
+  \end{itemize}
+
+  Come prima cosa scriviamo il centro e la successione:
+  \begin{displaymath}
+    x_0=1;\ a_n=n+4
+  \end{displaymath}
+  Ora cerchiamo $\rho$:
+  \begin{displaymath}
+    \lim_{n\to+\infty}\sqrt{|n+4|}=\lim \sqrt{|n+4|}=1=l
+  \end{displaymath}
+  \begin{displaymath}
+    \rho = \frac{1}{l}=1
+  \end{displaymath}
+  Quindi la serie converge se $x\in(1-1,1+1)=(0,2)$ e non converge altrove. Dobbiamo anche controllare gli estremi: \\ $x=0$
+  \begin{displaymath}
+    \sum_{n=0}^{\infty}(n+4)(0-1)^n
+  \end{displaymath}
+  ...\\ Diverge\\ x = 2\\
+
+  \begin{displaymath}
+    \sum_{n=0}^{\infty}(n+4)(2-1)^n = \sum_{n=0}^{\infty}n+4=+\infty
+  \end{displaymath}
+  Diverge.\\\\
+  Vediamo il secondo punto:
+  \begin{align*}
+    &S^{(k)}(x_0)=k!a_k \\
+    &S^{(5)}(1)=a_5\cdot5!=9\cdot 5!
+  \end{align*}
+\end{esempio}
+
+\paragraph{Applicazione della derivabilità}\label{par:paragraph_name} % (fold)
+
+Precedentemente abbiamo visto la serie armonica:
+\begin{displaymath}
+  \sum_{n=0}^{\infty}x^n=\frac{1}{1-x}
+\end{displaymath}
+Ma possiamo notare che questa è una serie di potenze con $x_0=0,\ a_n=1\ \ \forall n\in \mathbb{N}$
+Possiamo quindi calcolare la derivata di questa funzione $\forall x\in(-1,1)$ (utile per Taylor).
+Possiamo utilizzare questa proprietà anche per funzioni del tipo $\frac{1}{1+x}$ assegnando $y=-x$:
+\begin{displaymath}
+  f(x)=\frac{1}{1+x}\to y = -x \to f(y)=\frac{1}{1-y}
+\end{displaymath}
+
+% paragraph paragraph name (end)
+\begin{esempio}[]
+  
+\begin{displaymath}
+  T(x)=\sum_{n=0}^{\infty}\frac{(-1)^nx^{n+1}}{n+1}=x \sum_{n=0}^{\infty}\frac{(-1)^nx^n}{n+1}
+\end{displaymath}
+Calcoliamo $\rho$ e individiamo la serie ed il centro:
+\begin{align*}
+  x_0 =& 0\\
+  a_{n+1}=&\frac{(-1)^n}{n+1}\\
+  \rho = ... =& 1
+\end{align*}
+Vediamo gli estremi:
+\begin{align*}
+  & x=-1 ? \\
+  & \sum_{n=0}^{\infty}\frac{(-1)^n(-1)^{n+1}}{n+1} =\sum_{n=0}^{\infty}\frac{(-1)^n(-1)^n(-1)}{n+1} \\
+   =&\sum_{n=0}^{\infty}\frac{(-1)^{2n}(-1)}{n+1} =-\sum_{n=0}^{\infty}\frac{1}{n+1}=-\infty \\
+     &\text{Diverge.} \\
+     \\
+  & x = 1 \\
+  & \sum_{n=0}^{\infty}\frac{(-1)^n(1)^{n+1}}{n+1} =\sum_{n=0}^{\infty}\frac{(-1)^n}{n+1} \\
+   &\text{Converge per Leibnitz.} \\
+\end{align*}
+Ora vediamo la derivata:
+\begin{displaymath}
+  T'(x)=\sum_{n=0}^{\infty}\frac{(-1)^n(n+1)x^n}{n+1}=\sum_{n=0}^{\infty}(-1)^nx^n=\frac{1}{1+x}
+\end{displaymath}
+Così notiamo che questa è la derivata di $\ln(1+x)$, e quindi la $T(x)$ potrebbe essere proprio $\ln(1+x)$!\\
+Per dimostrarlo definiamo un'altra funzione $H$:
+\begin{align*}
+  & H(x)=T(x)-\ln(1+x)\text{ Definita in }(-1,1] \\
+  & H'(x)=T'(x)-\frac{1}{1+x}=\frac{1}{1+x}-\frac{1}{1+x}\equiv 0\ \forall x\in(-1,1) \\
+  & H(x)=k \text{ costante}\ \ \ H(0)=T(0)-\ln(1)=0-0 \\
+  & H(x) \equiv 0
+\end{align*}
+Abbiamo che $H$ è uguale a $0$ e quindi $T(x)=\ln(1+x)$. \\
+Quindi:
+\begin{definizione}[Identità logaritmica]
+  \begin{equation}
+    \ln(1+x)=\sum_{n=0}^{\infty}\frac{(-1)^nx^{n+1}}{n+1}\ \forall x\in(-1,1]
+  \end{equation}
+  Da notare però che questa identità è vera solo per $x\in(-1,1]$.
+\end{definizione}
+Possiamo trovare anche un identità per l'arcotangente in modo equivalente:
+\begin{align*}
+  & y = x^2 \\
+  & \frac{1}{1-y}=\sum_{n=0}^{\infty}y^n\ \forall y\in (-1,1) \\
+  & \frac{1}{1-x^2}=\sum_{n=0}^{\infty}(x^2)^n=\sum_{n=0}^{\infty}x^{2n}=1+x^2+x^4+... \\
+  & \text{mi sono perso} \\ \\
+  & y = -x^2 \\
+  & \frac{1}{1-(-x^2)}=\sum_{n=0}^{\infty}(-x^2)^n \\
+  = & \frac{1}{1+x^2}=\sum_{n=0}^{\infty}(-1)^nx^{2n} \\
+  = & 1-x^2+x^4-x^6... \\
+\end{align*}
+Abbiamo quindi:
+\begin{align*}
+  & \frac{1}{1+x^2}=\sum_{n=0}^{\infty}(-1)^nx^{2n} \\
+  & S(x)= \sum_{n=0}^{\infty}\frac{(-1)^nx^{2n+1}}{2n+1} \\
+  & S'(x)= \sum_{n=0}^{\infty}\frac{(-1)^n(2n+1)x^{2n}}{2n+1} \\
+  & = \sum_{n=0}^{\infty}(-1)^nx^{2n} boh
+\end{align*}
+\begin{osservazione}[]
+  Credo che stavamo cercando una funzione che è identica alla derivata dell'arctan per dimostrare che $S(x)$ è l'arcotangente
+\end{osservazione}
 
 
+\begin{definizione}[Identità dell'arcotangente]
+  \begin{equation}
+    \arctan(x)=\sum_{n=0}^{\infty}\frac{(-1)^nx^{2n+1}}{2n+1}\ \forall x\in(-1,1)
+  \end{equation}
+  
+\end{definizione}
+\begin{osservazione}[Pi greco come serie]
+  Con questa identità notiamo che è possibile scrivere $\pi$ in forma di serie:
+  \begin{align*}
+     \arctan(1)=&\frac{\pi}{4} = \sum_{n=0}^{\infty}\frac{(-1)^n1^{2n+1}}{2n+1}\\
+     \pi =& 4\sum_{n=0}^{\infty}\frac{(-1)^n1^{2n+1}}{2n+1}
+  \end{align*}
+\end{osservazione}
+\end{esempio}
+% subsection Applicazioni delle serie di potenze (end)
+
+\subsection{Funzioni analitiche}\label{sec:funzioni_analitiche} % (fold)
+\begin{definizione}[Funzioni analitiche]
+  Presa una $f(x)\in C^\infty(I)$(?) che ha infinite derivate in un intervallo $I\subset \mathbb{R}$, se $f(x)$ si può scrivere come una somma infinita di polinomi, $f(x)$ è detta \textbf{\textit{analitica in}} $I$
+
+\end{definizione}
+\textit{Quindi se il resto in forma di Lagrange dello sviluppo di Taylor tende a 0.}
+\begin{esempio*}[L'esponenziale è una funzione analitica]
+  \begin{displaymath}
+    e^x=1+x+\frac{x^2}{2!}+\frac{x^3}{3!}+...=\sum_{n=0}^{\infty}\frac{x^n}{n!}\ \forall x\in \mathbb{R}
+  \end{displaymath}
+\end{esempio*}
+\begin{esempio*}[Il seno e il coseno sono funzioni analitiche]
+  \begin{align*}
+     \sin(x)&=x+\frac{x^3}{3!}+\frac{x^5}{5!}-\frac{x^7}{7!}+... = \sum_{n=0}^{\infty}\frac{(-1)^nx^{2n+1}}{(2n+1)!} \\
+     \cos(x)&=1- \frac{x^2}{2!}+ \frac{x^4}{4!}-\frac{x^6}{6!}+...= \sum_{n=0}^{\infty}\frac{(-1)^nx^{2n}}{(2n)!} \\
+  \end{align*}
+\end{esempio*}
+
+% subsubsection Funzioni analitiche (end)
 
 % section Serie di Potenze (end)
 % chapter Serie Numeriche (end)
