@@ -1,7 +1,43 @@
-%! TEX root = ./Lezione-1.tex
-\input{preamble.tex}
+\input{../preamble.tex}
 
-\color{fg}
 \begin{document}
-  hellow orld
+  \chapter{Anelli e Campi}\label{chap:anelli_e_campi} % (fold)
+  \section{Spazi vettoriali}\label{sec:spazi_vettoriali} % (fold)
+  \subsection{Basi}\label{sub:basi} % (fold)
+  \begin{definizione*}
+    Sia $V$ uno spazio vettoriale su $\mathbb{K}$. Una lista $\{v_i\}_{i\in I}$ di vettori di $V$ è \textit{una base di $V$} se i vettori della lista sono linearmente indipendenti e $V$ è generato dai vettori della lista.
+  \end{definizione*}
+  \begin{esempio}
+    I vettori $\underline{e}_1,...,\underline{e}_n\in \mathbb{K}^n$ formano una base di $\mathbb{K}^n$ detta \textit{base standard} di $\mathbb{K}^n$.
+  \end{esempio}
+  \begin{esempio}
+    Una base dello spazio vettoriale dei polinomi $\mathbb{K}[x]$ è la lista $\{x^i\}_{i\in \mathbb{N}}$.
+  \end{esempio}
+  \begin{proposizione}
+    Sia $V$ uno spazio vettoriale su $\mathbb{K}$ generato dai vettori $v_1,...,v_n$, con ogni $v_i$ possibilmente nullo. Allora esiste una base di $V$ ottenuta eliminando alcuni dei $v_i$, cioè esiste una base di $V$ data da un sottoinsieme dei vettori che generano $V$.
+  \end{proposizione}
+  \begin{dimostrazione}[per induzione su $n$]
+    Se $n=0$, $V=\{0\}$, e dato che la lista vuota è linearmente indipendente per definizione, una base è data dalla lista stessa. \\
+    Supponiamo che l'affermazione valga per $n\geq 0$ e dimostriamola sostituendo $n+1$ a $n$. \\
+    Per ipotesi $V=\langle v_1,...,v _{n+1}\rangle $. Se $v_1,...,v _{n+1}$ sono linearmente indipendenti allora sono già una base di $V$. Supponiamo allora che siano linearmente dipendenti. Abbiamo dimostrato che dei vettori sono linearmente dipendenti s.se esiste $1\leq i\leq n+1$ t.c. $v_i$ sia nel sottospazio generato dai restanti vettori. Possiamo supporre che $i=n+1$, cioè $v _{n+1}\in\langle v_1,...,v_n\rangle $. Segue che:
+    \begin{equation}
+      V=\langle v_1,...,v_n\rangle
+      \label{eq:1}
+    \end{equation}
+    Infatti sia $v$ generico $\in V$: siccome $v_1,...,v _{n+1}$ generano $V$, esistono $\theta_1,...,\theta _{n+1}\\\in \mathbb{K}$ tali che
+    \begin{equation}
+      v=\theta_1v_1+...+\theta _{n+1}v _{n+1}
+      \label{eq:2}
+    \end{equation}
+    Siccome $v _{n+1}\in \langle v_1,...,v_n\rangle$, esistono $\mu_1,...,\mu_n\in \mathbb{K}$ tali che
+    \begin{equation}
+      v _{n+1}=\mu_1v_1+...+\mu_nv_n
+      \label{eq:3}
+    \end{equation}
+    Sostituendo nel membro di destra di \ref{eq:2} il membro di destra di \ref{eq:3} otteniamo che $v$ è combinazione lineare di $v_1,...,v_n$. Questo dimostra \ref{eq:1}. Allora, per ipotesi induttiva, esiste un sottoinsieme di $v_1,...,v _{n+1}$ che è una base di $V$.
+  \end{dimostrazione}
+
+  % subsection Basi (end)
+  % section Spazi vettoriali (end)
+  % chapter Anelli e Campi (end)
 \end{document}
