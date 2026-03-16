@@ -1,0 +1,242 @@
+\input{Lezione-1.tex}
+
+\section{Applicazioni lineari}\label{sec:applicazioni_lineari} % (fold)
+\begin{definizione}[]
+
+  Un'applicazione $V\to W$ è \textit{lineare} se:
+
+  \begin{itemize}
+    \item $f(v_1+v_2)=f(v_1)+f(v_2)\ \ \forall v_1,v_2\in V$
+    \item $f(\lambda v)=\lambda f(v)$
+  \end{itemize}
+
+\end{definizione}
+
+\begin{esempio*}[]
+
+\begin{align}
+  \mathbb{K}^n \to & f \to \mathbb{K}\\
+  (x_1,...,x_n) & \to \sum_{i=1}^{n}a_ix_i
+  \end{align}
+  $f$ è un'applicazione lineare. \\
+  1.:
+  \begin{align}
+    & f(X+Y)=?=f(X)+f(Y) \\
+    & =\sum_{i=1}^{n}a_i(x_i+y_i); = \sum_{i=1}^{n}a_ix_i+\sum_{i=1}^{n}a_iy_i
+    \label{eq:ex1}
+  \end{align}
+  2.:
+  \begin{align}
+    & f(\lambda \bar{\underline{X}}) =?= \lambda f(X)\\
+    & =\sum_{i=1}^{n}a_i\lambda x_i; =\lambda \sum_{i=1}^{n}a_ix_i
+  \end{align}
+
+\end{esempio*}
+
+\begin{osservazione}[]
+
+  Se
+
+  \begin{displaymath}
+    \mathbb{K}^n \rightarrow f \rightarrow \mathbb{K}
+  \end{displaymath}
+
+  è lineare, esistono $a_1,...,a_n\in \mathbb{K}$ t.c.
+  \begin{equation}
+    f(X)=\sum_{i=1}^{n}a_ix_i
+    \label{eq:star}
+  \end{equation}
+
+  \begin{dimostrazione}[]
+
+    Sia $a_i=f(\underline{e}_i)$. Allora vale \ref{eq:star}.\\
+    Infatti
+
+    \begin{equation}
+      f(\bar{X})=f(........
+    \end{equation}
+
+  \end{dimostrazione}
+
+\end{osservazione}
+
+\begin{osservazione}[]
+  Se $f:V\to W$ è lineare e $\lambda_1,...,\lambda_n\in \mathbb{K}; v_1,...,v_n\in V$ allora
+
+  \begin{align}\label{oss}
+     f(&\lambda_1v_1+\lambda_2v_2+...+\lambda_1v_1)=\\
+     = &\lambda f(v_1)+...+\lambda_n f(v_n)
+  \end{align}
+
+  Perché
+  \begin{equation}
+    x
+  \end{equation}
+  boh
+
+\end{osservazione}
+
+\begin{osservazione}[2]
+
+  \begin{align*}
+    & f(\underline{0})=\underline{0} \\
+    & f(\underline{0})=f(0\cdot \underline{0})=0f(\underline{0})=\underline{0}
+  \end{align*}
+
+\end{osservazione}
+
+
+% section Applicazioni lineari (end)
+
+\chapter{Matrici}\label{chap:matrici} % (fold)
+\begin{definizione}[]
+  Una matrice $m\times n$ con entrate in $\mathbb{K}$ è un'applicazione (funzione):
+
+  \begin{align}
+    \{(i,j)|1\leq i\leq m,\ 1\leq j\leq n\}&\to \mathbb{K}
+    \label{eq:def_matrice} \\
+    (i,j) &\to a_{i,j}
+  \end{align}
+
+\end{definizione}
+\begin{notazione*}[Matrice $m\times n\ \ A$]
+  \begin{equation}
+    A=\begin{bmatrix}
+      a_{1,1} & a_{1,2} &... & a _{1,n} \\
+      \vdots &  a _{i,j} & &\\
+      a _{m,1} & a _{m,2} & ...
+    \end{bmatrix} \leftarrow \text{riga i}
+    \label{eq:matrice_A}
+  \end{equation}
+  \begin{equation}
+    M _{m,n}(\mathbb{K}) = \{A | A \text{ matrice } m\times n \text{ con entrate in }\mathbb{K}
+    \label{eq:matrice_A2}
+  \end{equation}
+\end{notazione*}
+
+\subsubsection{Operazioni con matrici}\label{sec:operazioni_con_matrici} % (fold)
+Somma:
+\begin{align}
+  M _{m,n}(\mathbb{K}\times M _{m,n}(\mathbb{K}) &\to M _{m,n}(\mathbb{K}) \\
+  ((a_{i,j})(b_{i,j})= &\to (c_{i,j}) \\
+  \text{dove } c_{i,j} := & a_{i,j}+ b _{i,j}.
+\end{align}
+
+Moltiplicazione per uno scalare $\lambda \in \mathbb{K}$:
+\begin{equation}
+  \lambda \cdot A = (b _{i,j}) \text{ dove }b _{i,j}=\lambda \cdot a _{i,j}
+  \label{eq:molt_mat}
+\end{equation}
+
+\begin{definizione}[Moltiplicazione tra matrici]
+\begin{align}
+  & A = M _{m,n}(\mathbb{K}) \\
+  & B = M _{n,p}(\mathbb{K})
+\end{align}
+
+  La matrice $A\cdot B$ è la matrice $m\times p\ C$ (con entrate in $\mathbb{K}$) la cui entrata $c _{i,h}\ \ 1\leq i \leq m\ \ 1\leq h\leq p$ è data da
+
+  \begin{equation}
+    c _{i,h} := \sum_{j=1}^{n}a _{i,j}\cdot b _{j,h}
+    \label{eq:mat_mult_entry}
+  \end{equation}
+\end{definizione}
+\begin{esempio}[Moltiplicazione tra matrici]
+  \begin{align}
+    A & = \begin{bmatrix}
+      2 & 1 \\
+      0 & -1
+    \end{bmatrix} \\
+    B & = \begin{bmatrix}
+      2 & 1 & 1 \\
+      1 & 5 & -1
+    \end{bmatrix} \\
+    A \cdot B &= \begin{bmatrix}
+      2\times 2 + 1 \times 1 & ? & ? \\
+      ? & ? & ?
+    \end{bmatrix} = \\
+    & = \begin{bmatrix}
+      5 & ? & ? \\
+      ? & ? & ?
+    \end{bmatrix} \\
+    & B \cdot A \text{ non è definita.}
+  \end{align}
+\end{esempio}
+\begin{notazione*}[$A\in M _{m,n}(\mathbb{K})$]
+  $ A^i $ per $1\leq i\leq m$ è la riga $i$-esima di $A$. \\
+  $A_j$ per $\leq j\leq n$ è la colonna $j$-esima di $A$.
+  \begin{equation}
+    A = \begin{bmatrix}
+      A^1 \\
+      A^2 \\
+      \vdots \\
+      A^m
+    \end{bmatrix} = \begin{bmatrix}
+    A_1 & a_2 & ... & A_n
+    \end{bmatrix}
+    \label{eq:rige_colonne}
+  \end{equation}
+\end{notazione*}
+\begin{equation}
+  A\cdot B = \begin{bmatrix}
+    A^1 & ... & A^n
+  \end{bmatrix} \cdot \begin{bmatrix}
+    B_1 & ... & B_n
+  \end{bmatrix} = \begin{bmatrix}
+    A^1 B_1 & A^1 B_2 & ... \\
+            & \vdots \\
+    ... & A^i B_j & ... \\
+  \end{bmatrix}
+  \label{eq:mat_riga_per_colonna}
+\end{equation}
+
+\begin{notazione*}[]
+  La matrice unità $n\times n$ è
+  \begin{equation}
+    1 = 1_n = \begin{bmatrix}
+      1 & 0 \\
+      0 & 1
+    \end{bmatrix}
+    \label{eq:mat_unità}
+  \end{equation}
+
+  Una matrice $A\in M _{n,m}(\mathbb{K})$ è scalare se $A=\lambda 1_n\ \lambda \in \mathbb{K}$. \\
+  Una matrice $A\in M _{n,m}(\mathbb{K})$ è diagonale se $A=\begin{bmatrix}
+    \lambda & 0 \\
+    0 & \lambda 
+  \end{bmatrix}$
+\end{notazione*}
+\begin{proprietà}[Proprietà algebriche]
+  \begin{align}
+    (\lambda 1_n)\cdot A &= \lambda A = A\cdot (\lambda 1_n) \\
+    \label{prop_1}
+    (A\cdot B) \cdot C &= A\cdot (B\cdot C) \\
+    \label{prop_2}
+    A\cdot (B+B') & = A\cdot B + A\cdot B' \\
+    \label{prop_3}
+    (B+B') \cdot C & = B\cdot C+B' \cdot C
+    \label{prop_4}
+  \end{align}
+\end{proprietà}
+% subsubsection Operazioni con matrici (end)
+
+\subsubsection{Matrici e applicazioni lineari}\label{sec:matrici_e_applicazioni_lineari} % (fold)
+  \begin{equation*}
+    \mathbb{K}^n\to L_A\to \mathbb{K}^m
+  \end{equation*}
+  \begin{equation}
+    X\in M _{n,1} = \begin{bmatrix}
+      x_1 \\
+      \vdots \\
+      x_n
+    \end{bmatrix}\to A\cdot X
+  \end{equation}
+  $L_A$ è lineare per \ref{prop_1} e \ref{prop_3}
+
+
+
+
+% subsubsection Matrici e applicazioni lineari (end)
+% chapter Matrici (end)
+\end{document}
+
