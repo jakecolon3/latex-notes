@@ -1,44 +1,70 @@
-\input{Lezione-1.tex}
+\input{../preamble.tex}
+\begin{document}
 
-\section{Applicazioni lineari}\label{sec:applicazioni_lineari} % (fold)
-\begin{definizione}[]
+\chapter{Applicazioni lineari}\label{chap:applicazioni_lineari}
+\begin{definizione*}[]
 
-  Un'applicazione $V\to W$ è \textit{lineare} se:
+  Siano $V,W$ spazi vettoriali sullo stesso campo $\mathbb{K}$. Un'applicazione (una funzione) $f:V\to W$ è \textit{lineare} se:
 
-  \begin{itemize}
-    \item $f(v_1+v_2)=f(v_1)+f(v_2)\ \ \forall v_1,v_2\in V$
-    \item $f(\lambda v)=\lambda f(v)$
-  \end{itemize}
+  \begin{enumerate}
+    \item $f(v_1+v_2)=f(v_1)+f(v_2) \text{ per } v_1,v_2\in V$
+    \item $f(\lambda v)=\lambda f(v)$ per $\lambda\in \mathbb{K}$ e $v\in V$
+  \end{enumerate}
 
-\end{definizione}
+\end{definizione*}
 
 \begin{esempio*}[]
 
+Sia
 \begin{align}
-  \mathbb{K}^n \to & f \to \mathbb{K}\\
-  (x_1,...,x_n) & \to \sum_{i=1}^{n}a_ix_i
-  \end{align}
-  $f$ è un'applicazione lineare. \\
-  1.:
-  \begin{align}
-    & f(X+Y)=?=f(X)+f(Y) \\
-    & =\sum_{i=1}^{n}a_i(x_i+y_i); = \sum_{i=1}^{n}a_ix_i+\sum_{i=1}^{n}a_iy_i
-    \label{eq:ex1}
-  \end{align}
-  2.:
-  \begin{align}
-    & f(\lambda \bar{\underline{X}}) =?= \lambda f(X)\\
-    & =\sum_{i=1}^{n}a_i\lambda x_i; =\lambda \sum_{i=1}^{n}a_ix_i
-  \end{align}
+  \mathbb{K}^n & \xrightarrow{f} \mathbb{K}\\
+  (x_1,\dots,x_n) & \mapsto \sum_{i=1}^{n}a_ix_i \nonumber
+\end{align}
 
+$f$ è un'applicazione lineare.
 \end{esempio*}
+
+\begin{dimostrazione}[Punto 1.]
+Dobbiamo dimostrare:
+  \begin{equation}
+    f(X+Y) \overset{?}{=} f(X)+f(Y) \\
+  \end{equation}
+
+\newpage
+  Abbiamo che:
+  \begin{align*}
+    f(X+Y)=\sum_{i=1}^{n}a_i(x_i+y_i) & = a_1(x_1+y_1)+a_2(x_2+y_2)+... \\
+    f(X) + f(Y) = \sum_{i=1}^{n}a_ix_i+\sum_{i=1}^{n}a_iy_i & = a_1x_1 + a_1y_1 + a_2x_2 + a_2y_2 +... \\
+    \text{Raccogliendo gli $a_i$: }& = a_1(x_1+y_1) + a_2(x_2+y_2) + ...
+  \end{align*}
+  Vediamo quindi che vale 1.
+
+\end{dimostrazione}
+
+\begin{dimostrazione}[Punto 2.]
+
+  Dobbiamo dimostrare:
+
+  \begin{equation}
+    f(\lambda X) \overset{?}{=} \lambda f(X)\\
+  \end{equation}
+
+  Abbiamo che:
+  \begin{align*}
+    f(\lambda X) =\sum_{i=1}^{n}a_i\lambda x_i = \lambda a_1x_1 + \lambda a_2x_2 + ... & = \lambda(a_1x_1 + a_2x_2 + ...)\\
+    \lambda f(X) =\lambda \sum_{i=1}^{n}a_ix_i & = \lambda(a_1x_1 + a_2x_2 + ...)
+  \end{align*}
+  Vediamo quindi che vale 2.
+
+\end{dimostrazione}
+
 
 \begin{osservazione}[]
 
   Se
 
   \begin{displaymath}
-    \mathbb{K}^n \rightarrow f \rightarrow \mathbb{K}
+    \mathbb{K}^n \xrightarrow{f} \mathbb{K}
   \end{displaymath}
 
   è lineare, esistono $a_1,...,a_n\in \mathbb{K}$ t.c.
@@ -86,41 +112,47 @@
 \end{osservazione}
 
 
-% section Applicazioni lineari (end)
+\section{Matrici}
 
-\chapter{Matrici}\label{chap:matrici} % (fold)
 \begin{definizione}[]
   Una matrice $m\times n$ con entrate in $\mathbb{K}$ è un'applicazione (funzione):
 
-  \begin{align}
-    \{(i,j)|1\leq i\leq m,\ 1\leq j\leq n\}&\to \mathbb{K}
+  \begin{align*}
+    \{(i,j)\ |\ 1\leq i\leq m,\ 1\leq j\leq n\}&\to \mathbb{K}
     \label{eq:def_matrice} \\
     (i,j) &\to a_{i,j}
-  \end{align}
+  \end{align*}
 
 \end{definizione}
+
 \begin{notazione*}[Matrice $m\times n\ \ A$]
+
   \begin{equation}
     A=\begin{bmatrix}
       a_{1,1} & a_{1,2} &... & a _{1,n} \\
-      \vdots &  a _{i,j} & &\\
+      \vdots  & \vdots & &\vdots \\
+      \dots   &  a _{i,j} &... \\
+      \vdots  & \vdots & &\vdots \\
       a _{m,1} & a _{m,2} & ...
     \end{bmatrix} \leftarrow \text{riga i}
-    \label{eq:matrice_A}
+    \label{eq:notaz_matrice}
   \end{equation}
+
   \begin{equation}
-    M _{m,n}(\mathbb{K}) = \{A | A \text{ matrice } m\times n \text{ con entrate in }\mathbb{K}
+    M _{m,n}(\mathbb{K}) = \{A | A \text{ matrice } m\times n \text{ con entrate in }\mathbb{K}\} \nonumber
     \label{eq:matrice_A2}
   \end{equation}
+
 \end{notazione*}
 
-\subsubsection{Operazioni con matrici}\label{sec:operazioni_con_matrici} % (fold)
+\subsection{Operazioni con matrici}
+:
 Somma:
-\begin{align}
+\begin{align*}
   M _{m,n}(\mathbb{K}\times M _{m,n}(\mathbb{K}) &\to M _{m,n}(\mathbb{K}) \\
-  ((a_{i,j})(b_{i,j})= &\to (c_{i,j}) \\
-  \text{dove } c_{i,j} := & a_{i,j}+ b _{i,j}.
-\end{align}
+  ((a_{i,j})+(b_{i,j}))&\mapsto (c_{i,j}) \\
+  \text{dove } c_{i,j} := a&_{i,j}+ b _{i,j}.
+\end{align*}
 
 Moltiplicazione per uno scalare $\lambda \in \mathbb{K}$:
 \begin{equation}
@@ -162,6 +194,8 @@ Moltiplicazione per uno scalare $\lambda \in \mathbb{K}$:
     & B \cdot A \text{ non è definita.}
   \end{align}
 \end{esempio}
+
+\newpage
 \begin{notazione*}[$A\in M _{m,n}(\mathbb{K})$]
   $ A^i $ per $1\leq i\leq m$ è la riga $i$-esima di $A$. \\
   $A_j$ per $\leq j\leq n$ è la colonna $j$-esima di $A$.
@@ -208,21 +242,17 @@ Moltiplicazione per uno scalare $\lambda \in \mathbb{K}$:
 \end{notazione*}
 \begin{proprietà}[Proprietà algebriche]
   \begin{align}
-    (\lambda 1_n)\cdot A &= \lambda A = A\cdot (\lambda 1_n) \\
-    \label{prop_1}
-    (A\cdot B) \cdot C &= A\cdot (B\cdot C) \\
-    \label{prop_2}
-    A\cdot (B+B') & = A\cdot B + A\cdot B' \\
-    \label{prop_3}
-    (B+B') \cdot C & = B\cdot C+B' \cdot C
-    \label{prop_4}
+    (\lambda 1_n)\cdot A &= \lambda A = A\cdot (\lambda 1_n) \label{prop_alg_1} \\
+    (A\cdot B) \cdot C &= A\cdot (B\cdot C) \label{prop_alg_2} \\
+    A\cdot (B+B') & = A\cdot B + A\cdot B' \label{prop_alg_3} \\
+    (B+B') \cdot C & = B\cdot C+B' \cdot C \label{prop_alg_4}
   \end{align}
 \end{proprietà}
-% subsubsection Operazioni con matrici (end)
 
-\subsubsection{Matrici e applicazioni lineari}\label{sec:matrici_e_applicazioni_lineari} % (fold)
+\subsection{Matrici e applicazioni lineari}
+
   \begin{equation*}
-    \mathbb{K}^n\to L_A\to \mathbb{K}^m
+    \mathbb{K}^n \xrightarrow{L_A} \mathbb{K}^m
   \end{equation*}
   \begin{equation}
     X\in M _{n,1} = \begin{bmatrix}
@@ -231,12 +261,10 @@ Moltiplicazione per uno scalare $\lambda \in \mathbb{K}$:
       x_n
     \end{bmatrix}\to A\cdot X
   \end{equation}
-  $L_A$ è lineare per \ref{prop_1} e \ref{prop_3}
+  $L_A$ è lineare per \ref{prop_alg_1} e \ref{prop_alg_3}
 
 
 
 
-% subsubsection Matrici e applicazioni lineari (end)
-% chapter Matrici (end)
 \end{document}
 
