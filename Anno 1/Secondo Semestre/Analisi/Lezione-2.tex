@@ -1,6 +1,199 @@
-\input{preamble}
+\input{Lezione-1.tex}
 
-\color{fg}
-\begin{document}
-  asdfasdfasfd
+
+\subsection{Esempi di esercizi}\label{sub:esempi_di_esercizi} 
+
+\begin{esempio}[Calcolare derivate con serie]
+  È possibile ricondurre qualsiasi funzione del tipo:
+  \begin{equation}
+    \frac{1}{a+bx}
+  \end{equation}
+  Allo sviluppo della serie geometrica:
+
+  \begin{equation}
+    \frac{1}{2-5x}=\frac{1}{2}\frac{1}{1- \frac{5}{2}x}=\frac{1}{2}\sum_{n=0}^{\infty}(\frac{5}{2}x)^n\ \forall x\in (- \frac{2}{5}, \frac{2}{5})
+  \end{equation}
+  
+  Si può poi usare la formula \ref{deriv_serie} per calcolare la derivata.
+\end{esempio}
+
+\begin{esempio}[]
+
+  Supponiamo che la serie: 
+  \begin{equation}
+    \sum_{n=0}^{\infty}a_n(x-2)^n
+  \end{equation}
+
+  Non converge in $y_0=5$. È vero che non converge in $z_0=-2$? \\
+  Vediamo che se ha centro in $x_0=2$ e non converge in $y_0$, allora $\rho$ è minore di 3. Quindi è vero che non converge in $z_0$.
+
+  \begin{osservazione}[]
+    $\rho$ potrebbe essere esattamente 3 dato che il raggio di convergenza esclude gli estremi.
+  \end{osservazione}
+
+\end{esempio}
+
+\begin{esempio}[]
+
+  \begin{equation}
+    \sum_{n=0}^{\infty}a_n(x-1)^n
+  \end{equation}
+  So che non converge in $y_0=3$.
+
+  \begin{enumerate}
+    \item La serie non converge in $z_0=1$.
+    \item La serie converge in $z_0=0$.
+    \item La serie non converge in $z_0=4$.
+  \end{enumerate}
+
+  Quale affermazione è vera?\\
+  Il centro è 1 e non converge in 3, quindi $\rho \leq 2$. 1. quindi è falsa. \\
+  È ovvio che 2. è falsa. L'unica affermazione vera è quindi 3.
+
+\end{esempio}
+
+\begin{esempio}[]
+
+  \begin{equation}
+    \sum_{n=0}^{\infty}a_nx^n
+  \end{equation}
+  Converge in $y_0=2$. \\
+  È vero che la serie converge in $x=-1$? \\
+  La serie ha centro 0 e converge in 2, quindi $\rho \geq 2$. Segue quindi che la serie converge in $x=-1$.
+
+\end{esempio}
+
+
+\chapter{Numeri complessi}\label{chap:numeri_complessi}
+
+I numeri complessi nascono perché in $\mathbb{R}$ non c'è una soluzione per l'equazione
+
+\begin{equation}
+  x^2+1=0
+  \label{eq:complex_origin}
+\end{equation}
+
+Imponiamo quindi che esiste un $i$ tale che:
+\begin{definizione}
+  \begin{equation}
+    (i)^2=-1
+    \label{eq:i}
+  \end{equation}
+
+  Chiamiamo $i$ \textit{unità immaginaria}.
+\end{definizione}
+
+
+
+\begin{definizione}[Somma e prodotto]
+  Il prodotto tra numeri 2 complessi $(a+bi)$ e $(c+di)$ è: $(a+bi)(c+di)$. \\
+  La somma tra 2 numeri complessi $(a+bi)$ e $(c+di)$ è: $(a+c+bi+di)$.
+\end{definizione}
+
+\begin{osservazione}[]
+  I numeri complessi contengono i reali.
+\end{osservazione}
+\begin{osservazione}[]
+  Esiste sempre il reciproco sui complessi.
+\end{osservazione}
+
+\begin{proprietà}[]
+  Con l'aggiunta dell'unità immaginaria si può risolvere qualsiasi equazione algebrica.
+\end{proprietà}
+
+\begin{teorema}[Teorema fondamentale dell'algebra]
+  Ogni equzione algebrica ammette sicuramente $n$ soluzioni nel campo complesso, dove $n$ è il grado dell'equazione.
+\end{teorema}
+
+\subsection{Funzioni nel campo complesso}\label{sub:funzioni_nel_campo_complesso}
+
+Funzioni del tipo
+\begin{equation}
+  f: \mathbb{C}\to \mathbb{C}
+\end{equation}
+Sono difficili da calcolare. \\
+
+Noi però vedremo funzioni del tipo:
+\begin{equation}
+  f: I\subseteq \mathbb{R}\to \mathbb{C}
+\end{equation}
+
+Che sono molto più semplici, dato che possiamo scriverle come 2 funzioni, una reale ed una immaginaria:
+\begin{equation}
+  f(t)=f_1(t)+if_2(t)
+\end{equation}
+
+\subsubsection{Funzione esponenziale}\label{sec:funzione_esponenziale}
+
+Come definizsco $e^z$? \\
+
+Abbiamo definito $e^x$ in questo modo:
+\begin{equation}
+  e^x=\sum_{n=0}^{\infty}\frac{x^n}{n!}\ \forall x\in \mathbb{R}
+\end{equation}
+
+Possiamo quindi definire $e^z$ così:
+\begin{equation}
+  e^z=\sum_{n=0}^{\infty}\frac{z^n}{n!}\ \forall z\in \mathbb{C}
+  \label{eq:e^z}
+\end{equation}
+
+Inoltre si può dimostrare che vale questa proprietà:
+\begin{equation}
+  e^{z_1}\cdot e^{z_2}=e^{z_1+z_2}
+\end{equation}
+E quindi:
+\begin{equation}
+  e^z=\sum_{n=0}^{\infty}\frac{(z_1+z_2)^n}{n!}\ \forall z\in \mathbb{C}
+\end{equation}
+
+Questo ci permette di calcolare $e^z$:
+
+\begin{align*}
+  z&=a+bi \\
+  e^z&=e^{a+ib}=e^a\cdot e^{ib}
+\end{align*}
+Sappiamo già calcolare $e^a$, ma dobbiamo trovare $e^{ib}$. Se riusciamo a calcolare questo possiamo calcolare l'esponenziale di \textit{qualsiasi} numero complesso.
+
+\begin{definizione}[Esponenziale di un numero immaginario]
+\begin{equation}
+  e^{ib}=\sum_{n=0}^{\infty}\frac{(ib)^n}{n!}=\sum_{n=0}^{\infty}\frac{i^nb^n}{n!}
+  \label{eq:e^i}
+\end{equation}
+\end{definizione}
+Dato che $i^2=-1$, questa serie avrà segno alternante:
+\begin{equation}
+  i^0=1;\ \ i^1=i;\ \ i^2=-1;\ \ i^3=-i;\ \ i^4=1;\ \ i^5=i...
+\end{equation}
+\begin{proprietà} Il segno della serie alterna: \\
+  \begin{itemize}
+    \item $i^n$ con $n$ pari vale $\pm 1$
+    \item $1^n$ con $n$ dispari vale $\pm i$
+  \end{itemize}
+\end{proprietà}
+
+Quindi:
+\begin{align*}
+  \sum_{n=0}^{\infty}\frac{i^nb^n}{n!}&=1+ib- \frac{b^2}{2} - \frac{ib^3}{3!}+ \frac{b^4}{4!}+ \frac{ib^5}{5!}... \\
+  &=(1- \frac{b^2}{2}+ \frac{b^4}{4!} - \frac{b^5}{6!}...)+i(b- \frac{b^3}{3!}+ \frac{b^5}{5!}- \frac{b^7}{7!}...) \\
+\end{align*}
+Che sono rispettivamente l'espansione del coseno e del seno, quindi
+\begin{equation}
+  e^{ib}=\sum_{n=0}^{\infty}\frac{i^nb^n}{n!}=\cos(b)+i\sin(b)
+\end{equation}
+
+\begin{definizione}[Formula di Eulero]
+  \begin{equation}
+    e^{ib}=\cos(b)+i\sin(b)
+  \end{equation}
+\end{definizione}
+
+\begin{definizione}[]
+  Dato un $\lambda\in \mathbb{C}, t\in \mathbb{R}$
+  \begin{equation}
+    (e^{\lambda t})'=\lambda e^{\lambda t}
+  \end{equation}
+\end{definizione}
+Abbiamo fatto una dimostrazione con la formula di Eulero e una con la derivata della serie ma non le ho scritte
+
 \end{document}
