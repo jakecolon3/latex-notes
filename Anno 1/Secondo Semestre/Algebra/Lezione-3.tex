@@ -1,0 +1,266 @@
+\input{Lezione-2.tex}
+
+Dati $\mathbb{K}$ campo, $V,W$ spazi vettoriali su $\mathbb{K}$, ricordiamo:
+\begin{equation}
+    V\xrightarrow{f}W
+\end{equation}
+È lineare se
+\begin{enumerate}
+    \item $f(v_1+v_2)=f(v_1)+f(v_2)\ \forall v_1,v_2\in V$
+    \item $f(\lambda v)=\lambda f(v)\ \forall \lambda\in \mathbb{K}\ \forall v\in V$
+\end{enumerate}
+Si ha:
+\begin{gather}
+    \text{Se }V\xrightarrow{f} W \text{ è lineare allora} \\
+    f(\lambda v_1+...+\lambda_n v_n)=\sum_{i=1}^{n}\lambda_i f(v_i) (**)
+\end{gather}
+
+Ricordiamo: se $A\in M _{m,n}(\mathbb{K})$
+\begin{align}
+    K^n\xrightarrow{L_A}K^m \\
+    \overline{\underline{X}} \mapsto A\cdot X
+\end{align}
+$A\cdot X$ è lineare:
+\begin{enumerate}
+    \item $L_A (X+Y)= L_A(X)+L_A(Y)$
+    \item $L_A(\lambda X)=\lambda L_A(X)$
+\end{enumerate}
+
+\begin{osservazione}[]
+    Il prodotto tra matrici in generale non è commutativo. Infatti il prodotto tra 2 matrici è definito se la prima ha tante righe quante colonne della seconda o viceversa.
+    \begin{align}
+        A\cdot B&=&B\cdot A? \\
+        A\in M _{m,n}(\mathbb{K})&;&B\in M _{n,m}(\mathbb{K}) \\
+        A\cdot B\in M _{m,m}(\mathbb{K})&;&B\cdot A\in M _{n,n}(\mathbb{K})
+    \end{align}
+    Anche considerando solo matrici quadrate delle stesse dimensioni, non sempre il prodotto è commutativo. (esempio in foto)
+\end{osservazione}
+Però:
+\begin{gather}
+    A\in M _{m,n}(\mathbb{K}) \\
+    A\cdot (\lambda 1_n)\ \ \lambda 1_n=\begin{bmatrix}
+        \lambda & 0 \\
+        0 & \lambda
+    \end{bmatrix} \\
+    A=\begin{bmatrix}
+        A^1 \\ A^2 \\...\\ A^m
+    \end{bmatrix} \cdot \begin{bmatrix}
+    \lambda \underline{e}_1 & \underline{e}_2 & ... & \underline{e}_n
+    \end{bmatrix}= \begin{bmatrix}
+    A^i(\lambda \underline{e}_j)
+    \end{bmatrix}\mapsto \begin{bmatrix}
+    a_{i1} & \dots & a _{in}
+    \end{bmatrix} \cdot \begin{bmatrix}
+    0 \\ 0 \\ \lambda &\leftarrow \text{ indice j }\\ 0 \\\dots \\ 0
+    \end{bmatrix}
+\end{gather}
+Ma lo stesso calcolo mi dice che $(\lambda 1_m)\cdot A=\lambda A$. \\
+Con questa dimostrazione possiamo dimostrare che
+\begin{gather}
+    L_A(\lambda X)=\lambda L_A(X) \\
+    =A(\lambda X) = A(\lambda 1_n X)= \\
+    =(A(\lambda 1_n))X=(\lambda A)X \text{boh sono uguali vedi dispense}
+\end{gather}
+E quindi che $L_A$ è lineare.
+\begin{proposizione}
+    Sia $\mathbb{K}^n\xrightarrow{f}\mathbb{K}^m$ lineare. \\
+    Esiste $A\in M _{m,n}(\mathbb{K})$ t.c.
+    \begin{equation}
+        f=L_A,
+    \end{equation}
+    e tale $A$ è \textit{unica}.
+\end{proposizione}
+\begin{proposizione}[]
+    $V,W$ spazi vettoriali su $\mathbb{K}$ con $V$ finitamente generato. \\
+    Siano $v_1,...,v_n\in V$ linearmente indipendenti e $w_1,...,w_n\in W$.
+    Esiste $V\xrightarrow {f} W$ lineare tale che $f(v_i)=w_i\ \ \forall i\in\{1,...,n\}$. (*)
+\end{proposizione}
+\begin{dimostrazione}[]
+    Prima nel caso in cui $\{v_i,...,v_n\}$ è anche una base di $V$. \\
+    Definiamo
+    \begin{equation}
+        V\xrightarrow{f} W
+    \end{equation}
+    così: se $v\in V\ \ \ v=\sum_{i=1}^{n}x_iv_i$ dove $(x_1,...,x_n)=X_ \mathbb{B}(V)$. \\
+    Poniamo $f(v)=\sum_{i=1}^{n}x_iw_i$. \\
+    $f$ è lineare perché
+    \begin{enumerate}
+        \item $f(u+v)\overset{?}{=}f(u)+f(v)$ \\
+        $u=\sum_{i=1}^{n}x_iv_i$ \\
+        $v=\sum_{i=1}^{n}y_iv_i$ \\
+        Ma $f(u+v)=\sum_{i=1}^{n}(x_i+y_i)w_i$ \\
+        E $f(u)+f(v)=\sum_{i=1}^{n}x_iw_i+\sum_{i=1}^{n}y_iw_i$
+        \item Si dimostra in modo analogo.
+    \end{enumerate}
+    Ora in generale estendiamo $v_1,...,v_n$ ad una base $\{v_1,...,v_n,u_1,...,u_n\}$ di $V$. \\
+    Per quello che abbiamo dimostrato esiste $V\xrightarrow{f} W$ lineare t.c.
+    \begin{equation}
+        \begin{cases}
+            f(v_i)=w_i & i\in\{1,...,n\}\\
+            f(u_j)=\underline{0} & j\in\{1,...,m\}
+        \end{cases}
+    \end{equation}
+\end{dimostrazione}
+\begin{osservazione}[]
+    Se non si suppone "$v_1,...,v_n$" l'affermazione della Prop. è falsa.\\
+    Supponiamo che $v_1,v_2\in V:\ v_1-2v_2=\underline{0}$. Se $V\xrightarrow{f} W$ è lineare
+    \begin{equation}
+        \underline{0}=f(\underline{0})=f(v_1-2v_2)\overset{(**)}{=}f(v_1)-2f(v_2)
+    \end{equation}
+    boh
+\end{osservazione}
+\begin{proposizione}
+    $V,W$ sp. vett./$\mathbb{K}$\\
+    \begin{equation}
+        V=<v_1,...,v_n>
+    \end{equation}
+    Se
+    \begin{equation}
+        V\xrightarrow{f,g} W
+    \end{equation}
+    Sono lineari e
+    \begin{equation}
+        f(v_i)=g(v_i)\ \ \forall i\in\{1,...,n\}
+    \end{equation}
+    Allora $f=g$.
+\end{proposizione}
+\begin{dimostrazione}[]
+    Sia $v\in V$. \\
+    \begin{equation}
+        v=\sum_{i=1}^{n}x_iv_i \text{ dato che è generatore}
+    \end{equation}
+    Quindi, per (**)
+    \begin{gather}
+        f(v)=\sum_{i=1}^{n}x_if(v_i) \\
+        g(v)=\sum_{i=1}^{n}x_ig(v_i)
+    \end{gather}
+    Quindi $f(v)=g(v)$.
+\end{dimostrazione}
+\begin{corollario}[Segue da Prop. 2 e 3]
+    Sia $\{v_1,\dots,v_n\}$ una base di $V$. \\
+    Dati $w_1,\dots,w_n\in W$ esiste $V\xrightarrow{f} W$ lineare tale che $f(v_i)=w_i$ e tale applicazione è \textit{unica}.
+\end{corollario}
+\begin{dimostrazione}[Prop. 1]
+    Osserviamo che
+    \begin{equation}
+        L_A(\underline{e}_j)=A_j
+    \end{equation}
+    Perché
+    \begin{gather}
+        L_A(\underline{e}_j)=A\cdot \begin{bmatrix}
+            0 \\ 0 \\ 1 & \leftarrow j \\ 0 \\ \vdots \\ 0
+        \end{bmatrix} = \begin{bmatrix}
+            A^1 \\ A^2 \\ \vdots \\ A^n
+        \end{bmatrix} \cdot \begin{bmatrix}
+            0 \\ 0 \\ 1 & \leftarrow j \\ 0 \\ \vdots \\ 0
+        \end{bmatrix} = \\
+        = \begin{bmatrix}
+            A^1 \underline{e}_j \\ A^2 \underline{e}_j \\ \vdots \\ A^n \underline{e}_j
+        \end{bmatrix} = \begin{bmatrix}
+            a _{1j} \\ a _{2j} \\ \vdots \\ a _{nj}
+        \end{bmatrix} = A_j
+    \end{gather}
+    Dimostriamo che se $A$ esiste è unica. Infatti supponiamo che 
+    \begin{equation}
+        L_A=L_B
+    \end{equation}
+    Allora
+    \begin{equation}
+        A_j=L_A(\underline{e}_j)=L_B(\underline{e}_j)=B_j
+    \end{equation}
+    Vediamo che $A_j=B_j$ e quindi $A_j$ è unica. \\
+    Dimostriamo che $A$ esiste. Poniamo $A_j:=f(\underline{e}_j)$.\\
+    Allora
+    \begin{equation}
+        L_A(\underline{e}_j)=A_j=f(\underline{e}_j)
+    \end{equation}
+    $\mathbb{K}^n\xrightarrow{L_A}\mathbb{M}$ è lineare\\
+    Siccome $\mathbb{K}^n=<\underline{e}_1,...,\underline{e}_n>$ segue dalla Prop. 3 che $L_A=f$.
+\end{dimostrazione}
+Sia $V\xrightarrow{f} W$ lineare.
+\begin{definizione}[]
+    Il \textit{nucleo di $f$}  è
+    \begin{equation}
+        \ker f:=\{v\in V\ |\ f(v)=\underline{0}
+        \label{eq:nucleo}
+    \end{equation}
+\end{definizione}
+\begin{osservazione}[]
+    $\ker f$ è un sottospazio vettoriale di $V$.
+    Perché:
+    \begin{dimostrazione}[]
+        \begin{gather}
+            f(\underline{0})=\underline{0}\rightarrow \underline{0}\in \ker f \\
+            \text{Se }v_1,v_2\in \ker f\ \ \lambda_1,\lambda_2\in \mathbb{K}\\
+            (\lambda_1v_1+\lambda_2v_2)\overset{?}{\in}\ker f \\
+            f(\lambda_1v_1+\lambda_2v_2)\lambda_1f(v_1)+\lambda_2f(v_2)=\lambda_1\underline{0}+\lambda_2\underline{0}=\underline{0}
+        \end{gather}
+    \end{dimostrazione}
+\end{osservazione}
+\begin{proposizione}
+    $V\xrightarrow{f} W$ lineare è iniettiva $\iff\ker f=\{\underline{0}\}$
+\end{proposizione}
+\begin{dimostrazione}[]
+    $\Rightarrow$: sia $f$ iniettiva. \\
+    Supponiamo che $v\in\ker f$, cioè
+    \begin{equation}
+        f(v)=\underline{0}=f(\underline{0})
+    \end{equation}
+    Per l'iniettività di $f$, $v=0$ \\
+    $\Leftarrow$: supponiamo che $\ker f=\{\underline{0}\}$. \\
+    Siano $v_1,v_2\in V$ t.c. $f(v_1)=f(v_2)$ \\
+    $f$ è lineare, quindi:
+    \begin{equation}
+        f(v_1-v_2)=f(v_1)-f(v_2)=\underline{0}
+    \end{equation}
+    Quindi $(v_1-v_2)\in\ker f$ e quindi $v_1-v_2=\underline{0}$.
+\end{dimostrazione}
+\begin{osservazione}[]
+    $Im f\subset W$  è un sottospazio vettoriale.
+\end{osservazione}
+\begin{dimostrazione}[]
+    $Im f\not =\emptyset$ perché $V\not= \emptyset$. \\
+    Siano $w_1,w_2\in Im f$ e $\lambda_1,\lambda_2\in \mathbb{K}$. \\
+    \begin{gather}
+        \exists v_1,v_2\in V \text{ t.c. } f(v_i)=w_i \\
+        \lambda_1w_1+\lambda_2w_2=\lambda_1 f(v_1)+\lambda_2f(v_2)=f(\lambda_1 v_2+\lambda_2v_2)
+    \end{gather}
+    Quindi $(\lambda_1w_1+\lambda_2w_2)\in Im f$
+\end{dimostrazione}
+\begin{proposizione}
+    Siano $V$ spazio vett. finitamente generato, $W$ spazio vettoriale. \\
+    Sia $V\xrightarrow{f} W$ lineare. \\
+    Allora
+    \begin{equation}
+        \dim V=\dim\ker f+\dim Im(f)
+    \end{equation}
+\end{proposizione}
+\begin{corollario}
+    Supponiamo che $\dim V=\dim W$. \\
+    Sia $V\xrightarrow{f} W$ lineare. \\
+    Allora $f$ è biunivoca se e solo se $\ker f=\{\underline{0}\}$.
+\end{corollario}
+\begin{dimostrazione}[del corollario]
+    Supponiamo $f$ biunivoca. \\
+    Allora $f$ è iniettiva $\Rightarrow \ker f=\{\underline{0}\}$. \\
+    Supponiamo che $\ker f=\{\underline{0}\}$. \\
+    Quindi $f$ è iniettiva. Per la Prop. 6
+    \begin{equation}
+        \dim V=0+\dim Im f\Rightarrow \dim(Im f)=\dim V = \dim W
+    \end{equation}
+    $\dim V=\dim W \Rightarrow Im f=W$ cioè $f$ è suriettiva.
+\end{dimostrazione}
+\begin{esempio}[]
+    \begin{equation}
+        A\inM _{n,m}(\mathbb{K})
+    \end{equation}
+    Per il corollario se
+    \begin{equation}
+        A X=\underline{0}
+    \end{equation}
+    (ha come unica soluzione quella banale) \\
+    Allora $\forall B\in M _{n,m}(\mathbb{K})$ soluzione di $AX=B$.
+\end{esempio}
+
+
+\end{document}
