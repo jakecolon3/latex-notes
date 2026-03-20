@@ -13,10 +13,11 @@
 \newmdtheoremenv[nobreak=true]{teorema}{Teorema}
 % \newmdtheoremenv[nobreak=true]{dimostrazione}{Dimostrazione}
 \newtheorem{esempio}{Esempio}
-\newtheorem*{corollario}{Corollario}
+\newtheorem{corollario}{Corollario}
+\newtheorem*{corollario*}{Corollario}
 
-\newtheorem*{notazione*}{Notazione}
-\surroundwithmdframed{notazione*}
+\newtheorem*{notazione}{Notazione}
+\surroundwithmdframed{notazione}
 \newtheorem*{definizione*}{Definizione}
 \surroundwithmdframed{definizione*}
 
@@ -26,3 +27,5 @@
 \theoremstyle{remark}
 \newtheorem*{osservazione}{Osservazione}
 \newtheorem*{dimostrazione}{Dimostrazione}
+
+\newcommand{\Span}[1]{\left\langle{#1}\right\rangle}
