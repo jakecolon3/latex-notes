@@ -149,10 +149,10 @@ E quindi:
 
 Questo ci permette di calcolare $e^z$:
 
-\begin{align*}
-  z&=a+bi \\
-  e^z&=e^{a+ib}=e^a\cdot e^{ib}
-\end{align*}
+Preso un numero complesso $z=a+ib$, per calcolare $e^z$:
+\begin{equation}
+  e^z=e^{a+ib}=e^a\cdot e^{ib}
+\end{equation}
 Sappiamo già calcolare $e^a$, ma dobbiamo trovare $e^{ib}$. Se riusciamo a calcolare questo possiamo calcolare l'esponenziale di \textit{qualsiasi} numero complesso.
 
 \begin{definizione}[Esponenziale di un numero immaginario]
@@ -165,35 +165,10 @@ Dato che $i^2=-1$, questa serie avrà segno alternante:
 \begin{equation}
   i^0=1;\ \ i^1=i;\ \ i^2=-1;\ \ i^3=-i;\ \ i^4=1;\ \ i^5=i...
 \end{equation}
-\begin{proprietà} Il segno della serie alterna: \\
-  \begin{itemize}
-    \item $i^n$ con $n$ pari vale $\pm 1$
-    \item $1^n$ con $n$ dispari vale $\pm i$
-  \end{itemize}
+\begin{proprietà}
+  
 \end{proprietà}
 
-Quindi:
-\begin{align*}
-  \sum_{n=0}^{\infty}\frac{i^nb^n}{n!}&=1+ib- \frac{b^2}{2} - \frac{ib^3}{3!}+ \frac{b^4}{4!}+ \frac{ib^5}{5!}... \\
-  &=(1- \frac{b^2}{2}+ \frac{b^4}{4!} - \frac{b^5}{6!}...)+i(b- \frac{b^3}{3!}+ \frac{b^5}{5!}- \frac{b^7}{7!}...) \\
-\end{align*}
-Che sono rispettivamente l'espansione del coseno e del seno, quindi
-\begin{equation}
-  e^{ib}=\sum_{n=0}^{\infty}\frac{i^nb^n}{n!}=\cos(b)+i\sin(b)
-\end{equation}
 
-\begin{definizione}[Formula di Eulero]
-  \begin{equation}
-    e^{ib}=\cos(b)+i\sin(b)
-  \end{equation}
-\end{definizione}
 
-\begin{definizione}[]
-  Dato un $\lambda\in \mathbb{C}, t\in \mathbb{R}$
-  \begin{equation}
-    (e^{\lambda t})'=\lambda e^{\lambda t}
-  \end{equation}
-\end{definizione}
-Abbiamo fatto una dimostrazione con la formula di Eulero e una con la derivata della serie ma non le ho scritte
 
-\end{document}

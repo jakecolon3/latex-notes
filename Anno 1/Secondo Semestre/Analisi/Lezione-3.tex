@@ -1,0 +1,274 @@
+\input{../preamble.tex}
+
+
+\begin{document}
+\chapter{Integrali}\label{chap:integrali} % (fold)
+Vedremo gli integrali come definiti da Reimann. \\
+Dato $R$ rettangolo con area $A(R)=b\cdot h$ \\
+
+\section{Definizione e basi}\label{sec:definizione_e_basi}
+
+
+Data una
+\begin{equation}
+f:[a,b]\to \mathbb{R}
+\end{equation}
+limitata, definiamo l'area sotto $f$ come:
+\begin{equation}
+    R_f=\{(x,y:\ a\leq x\leq b,\ 0\leq y\leq f(x)\}
+    \label{eq:rf}
+\end{equation}
+Oppure $R_f=Sf=$ area di $f$. \\
+
+\begin{osservazione}[]
+    Se abbiamo $f$ costante: $f(x)=\alpha$, con $x\in[a,b]$, l'area di $f$ è l'area di un rettangolo. Quindi:
+    \begin{equation}
+        Sf= \text{ area del rettangolo } [a,b]\times[0,\alpha]=(b-a)\alpha
+        \label{eq:area_costante}
+    \end{equation}
+
+    Se $f$ è definita a tratti come 2 costanti:
+    \[
+        f(x)=\begin{cases}
+            \alpha_1, &\text{ se }x\in[a,c)\\
+            \alpha_2, &\text{ se }x\in[c,b]
+        \end{cases}
+    \]
+    Allora $Sf=(c-a)\alpha_1+(b-c)\alpha_2$.
+\end{osservazione}
+\begin{definizione}[]
+    Una partizione $P$ dell'intervallo $[a,b]$ è un insieme
+    \begin{equation}
+        P = \{x_0,x_1,...,x_n\} \text{ tale che } a=x_0<x_1<...<x _{n-1}< x_n=b
+        \label{eq:part}
+    \end{equation}
+    L'ampiezza di $P : |P|=\max\{(x_k-x _{k-1}), k=1,...,n\}$
+\end{definizione}
+\begin{esempio}[]
+    \begin{gather}
+        h = \frac{b-a}{n} \\
+        x_0 = a, x_1 = a+h, x_2=a+2h, ..., x_k=a+kh \\
+        x_n=a+nh=n\frac{b-a}{n}=b-a
+        \label{eq:espart}
+    \end{gather}
+\end{esempio}
+Praticamente una partizione di un'intervallo è un'insieme di punti equalmente distanti tra di loro. \\
+
+\begin{definizione}[]
+    Una funzione $\Phi_P:[a,b]\to \mathbb{R}$ è \textit{costante a tratti} se esiste una partizione $P$ e un'insieme
+    \[
+        \{\alpha_1,...,\alpha_n\}:\Phi_P(x)=\alpha_k \text{ se }x\in[x _{k-1},x_k], k=\in[1,n]
+    \]
+    (vedi immagine)
+\end{definizione}
+Abbiamo quindi che $S\Phi_P = \sum_{k=1}^{n}\alpha_k(x_k-x _{k-1})$. Dobbiamo però precisare:
+\begin{itemize}
+    \item Se ogni $\alpha_k\geq 0$ allora $S\Phi_P$ è l'area del sottografico.
+    \item Se ci sono $\alpha_k$ negativi allora $S\Phi_P$ non ha significato di area.
+\end{itemize}
+\subsubsection{Approssimazione dell'area del sottografico}\label{sec:approssimazione_dell_area_del_sottografico}
+
+Sia $f:[a,b]\to \mathbb{R}$ limitata. Fissiamo $P=\{x_0,...,x_n\}$. \\
+Definiamo $\Phi_P:[a,b]\to \mathbb{R}:$
+\begin{gather}
+    \Phi_P(x)=\begin{matrix}
+        \inf f(x) \\ x\in[x _{k-1},x_k]
+    \end{matrix} \text{ se } x\in[x _{k-1}, x_k] \\
+    \text{Chiamiamo }\begin{matrix}
+        \inf f(x) \\ x\in[x _{k-1},x_k]
+    \end{matrix} = m_k
+\end{gather}
+Definiamo $\Phi^P:[a,b]\to \mathbb{R}:$
+\begin{gather}\begin{matrix}
+        \sup f(x) \\ x\in[x _{k-1},x_k]
+    \end{matrix}
+    \text{ se } x\in[x _{k-1},k] \\
+    \text{Chiamiamo }\begin{matrix}
+        \sup f(x) \\ x\in[x _{k-1},x_k]
+    \end{matrix}= M_k.
+\end{gather}
+
+\begin{osservazione}[]
+    Abbiamo che $\Phi_P\leq f\leq \Phi^P$.
+\end{osservazione}
+
+\begin{notazione*}[]
+    \begin{gather}
+        S\Phi_P=S_Pf \\
+        S\Phi^P=S^Pf
+    \end{gather}
+\end{notazione*}
+
+\begin{osservazione}[]
+    Abbiamo che $S_Pf\leq Sf\leq S^Pf$.
+\end{osservazione}
+
+Abbiamo quindi trovato una prima approssimazione per $Sf$. Vogliamo però migliorare questa approssimazione, e possiamo farlo prendendo intervalli più piccoli tra ogni $x_k$. \\
+Scriviamo esplicitamente $S^Pf$ e $S_Pf$:
+\begin{gather}
+    S_Pf=\sum_{k=1}^{n}m_k(x _k - x _{k-1}) = \text{ somme integrali per difetto}\\
+    S^Pf=\sum_{k=1}^{n}M_k(x _{k-1} - x k) = \text{ somme integrali per eccesso}
+\end{gather}
+Se $Q$ è un \textit{raffinamento} di $P$, cioè contiente più punti di $P$:
+\begin{equation}
+    P\subseteq Q \mapsto \begin{matrix}S_Pf\leq S_Qf \\ S^Pf\geq S^Qf\end{matrix}
+\end{equation}
+
+Strategia per calcolare $Sf$:
+\begin{enumerate}
+    \item Scelgo una successione di partizioni $P_n:|P_n|\xrightarrow{n\to\infty}0$
+    \item Calcolo $S^{P_n}f$ e $S _{P_n}f$
+    \item Calcolo $\lim_{n}\to{+\infty}S^{P_n}f$ e $\lim_{n}\to{+\infty}S _{P_n}f$. Se coincidono allora $Sf$ è il valore dei limiti.
+\end{enumerate}
+\begin{esempio}[Il nostro primo integrale]
+    Sia $f(x)=e^x\ \ x\in[a,b]$. \\
+    Dobbiamo prendere una successione di partizioni la cui ampiezza tende a 0:
+    \begin{gather}
+        P_n=\{x_k=a+kh, k\in[0,n]\} \\
+        h= \frac{b-a}{n}
+    \end{gather}
+    Abbiamo:
+    \begin{gather}
+        m_k=...=e^{x_{k-1}} \\
+        M_k=...=e^{x_k}
+    \end{gather}
+    Vediamo che $|P_n|=h$ tende a $0\xrightarrow{n\to\infty}$. \\
+    Calcoliamo le somme integrali:
+    \begin{align}
+        S_Pf &=\sum_{k=1}^{n}e^{a+(k-1)h}\cdot h = \\
+             &=he^a \sum_{k=1}^{n}(e^h)^{k-1} = \\
+             &=he^a \sum_{l=0}^{n-1}(e^h)^l = \\
+             &=he^a \frac{1-(e^h)^n}{1-e^h} = \\
+             &=\frac{h}{1-e^h}e^a(1e^{h-1}) = \\
+             &=\frac{h}{1-e^h}(e^a-e^{\not a+b-\not a}= \\
+             &=\frac{h}{e^h-1}(e^b-e^a)
+    \end{align}
+    Ma $\lim_{h\to0}\frac{h}{e^h-1}=1$, quindi:
+    \begin{equation}
+        \lim_{n\to+\infty}S_{P_n}f=e^b-e^a
+    \end{equation}
+    I conti per $S^{P_n}f$ sono analoghi, e abbiamo:
+    \begin{equation}
+        \lim_{n\to+\infty}S^{P_n}f=e^b-e^a
+    \end{equation}
+    $Sf$ è proprio l'integrale di $e^x$:
+    \begin{equation}
+        Sf= \int_{a}^{b}e^x dx
+    \end{equation}
+\end{esempio}
+
+
+\begin{definizione}[]
+    Sia $f:[a,b]\to \mathbb{R}$ limitata. Se per una successione di partizioni $P_n$ tali che $|P_n|\to 0$, esistono finiti e coincidono:
+    \begin{equation}
+        \lim_{n\to+\infty}S^{P_n}f=\lim_{n\to+\infty}S_{P_n}f=l
+    \end{equation}
+    Allora $f$ è \textit{integrabile} in $[a,b]$ e:
+    \begin{equation}
+        l= \int_{a}^{b}f(x)dx
+    \end{equation}
+    $l$ è \textit{l'integrale di $f$ tra $a$ e $b$}.
+\end{definizione}
+
+\begin{osservazione}[]
+    La variabile $x$ è "muta": posso usare qualsiasi variabile e i conti restano uguali.
+\end{osservazione}
+
+\begin{esempio}[]
+    Indichiamo perché
+    \begin{equation}
+        f(x)=\begin{cases}
+            7, & x\in[-1,0)\\
+           -4,& x\in[0,1]
+        \end{cases}
+    \end{equation}
+    È integrabile in $[-1,1]$. \\
+    Vediamo che ci basta scegliere $P_n:\{-1,0,1\}\in P_n$: così facendo avremo
+    \begin{equation}
+        S_{P_n}f=S^{P_n}f=\int_{-1}^{1}f(x)dx=3
+    \end{equation}
+\end{esempio}
+
+
+\section{Funzioni integrabili}\label{sec:funzioni_integrabili}
+
+\begin{definizione}[]
+    Sia $f:[a,b]\to \mathbb{R}$ è \textit{Lipschitziana} se:
+    \begin{equation}
+        \exists L\geq 0: |f(x)-f(y)|\leq L|x-y|\ \forall x,y\in [a,b]
+    \end{equation}
+\end{definizione}
+
+\begin{esempio}[]
+    Vediamo delle funzioni Lipschitziane. \\
+    \begin{itemize}
+        \item $f(x)=|x|$ è Lipschitziana: dalla disuguaglianza triangolare abbiamo che
+            \begin{equation}
+                ||x|-|y||\leq|x-y|
+            \end{equation}
+        \item Ogni $f$ derivabile con derivata continua in $[a,b]$ è Lipschitziana.
+    \end{itemize}
+\end{esempio}
+
+\begin{teorema}[Teorema fondamentale del calcolo integrale semplificato]
+    Siano $f,F$ tali che
+    \begin{itemize}
+        \item $f$ è Liptschitziana in $[a,b] \iff f\in C^1([a,b])$.
+        \item $F$ è derivabile con $F'=f$.
+    \end{itemize}
+    Allora:
+    \begin{enumerate}
+        \item $f$ è integrabile in $[a,b]$.
+        \item $\int_{a}^{b}f(x)dx=F(b)-F(a)$.
+    \end{enumerate}
+    Chiamiamo $b$ \textit{estremo superiore di integrazione} e $a$ \textit{estremo inferiore di integrazione}.
+\end{teorema}
+
+\begin{dimostrazione}[]
+    Dimostriamo per le somme integrali per difetto, il ragionamento è analogo perl o somme per eccesso.
+    \begin{equation}
+        S_Pf=\sum_{k=1}^{n}m_k(x_k-x_{k-1})
+    \end{equation}
+    Abbiamo che $m_k=\inf f$, ma le funzioni Liptschiziane sono continue, quindi $m_k=\min f=f(\varepsilon_k)$.\\
+    Quindi, dato che $F$ è derivabile, possiamo usare il teorema di Lagrange: $F(x_k)-F(x_{k-1})=F'(\eta_k)(x_k-x_{k-1})$, dove $F'(\eta_k)=f(\eta_k)$:
+    \begin{align*}
+        S_Pf &=\sum_{k=1}^{n}f(\varepsilon_k)(x_k-x_{k-1})=\\
+             &=\sum_{k=1}^{n}(f(\varepsilon_k)-f(\eta_k)+f(\eta_k))(x_k-x_{k-1})=\\
+             &=\sum_{k=1}^{n}(f(\varepsilon_k)-f(\eta_k)(x_k-x_{k-1})+\sum_{k=1}^{n}f(\eta_k)(x_k-x_{k-1})= \\
+             &=\sum_{k=1}^{n}(F(x_k)-F(x_{k-1})= \\
+             &=\text{ somma telescopica... }= \\
+             &=F(x_n)-F(x_0)=F(b)-F(a)
+    \end{align*}
+    Quindi
+    \begin{equation}
+        S_Pf-(F(b)-F(a))=\sum_{k=1}^{n}(f(\varepsilon_k)-f(\eta_k))(x_k-x_{k-1})
+    \end{equation}
+    boh
+    \begin{gather}
+        |S_Pf-(F(b)-F(a))|=|\sum_{k=1}^{n}(f(\varepsilon_k)-f(\eta_k))(x_k-x_{k-1})| \leq \\
+        \leq \sum_{k=1}^{n}|f(\varepsilon_k)-f(\eta_k)|(x_k-x_{k-1}) \leq \\
+        \text{Lipschitzianità: }\leq L \sum_{k=1}^{n}|\varepsilon_k-\eta_k|(x_k-x_{k-1})\leq L|P|(b-a)
+    \end{gather}
+\end{dimostrazione}
+
+\begin{esempio}[]
+    Sia $F(x)=\frac{x^2}{2}$. Allora $F'=f=x$. L'integrale di $f$ è:
+    \begin{equation}
+        \int_{a}^{b}xdx=\frac{b^2}{2}-\frac{a^2}{2}=\left[\frac{x^2}{2}\right]^{x=b}_{x=a}
+    \end{equation}
+\end{esempio}
+
+\subsubsection{Integrali di funzioni comuni}\label{sec:integrali_di_funzioni_comuni}
+
+\begin{itemize}
+        \item $F(x)=\frac{x^{n+1}}{n+1}$, $F'=x^n=f$:
+        \begin{equation}
+            \int_{a}^{b}x^ndx=\left[\frac{n^{n+1}}{n+1}\right]_a^b
+        \end{equation}
+        vedi gli altri non mi va di scriverli
+\end{itemize}
+
+
+
+
+\end{document}
