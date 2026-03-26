@@ -1,0 +1,125 @@
+\input{../preamble.tex}
+\begin{document}
+
+\newpage
+
+\chapter{Applicazioni lineari}
+\section{Lezione 4}
+
+\begin{proposizione}
+    Data
+    \begin{equation}
+        V\xrightarrow{f}W
+    \end{equation}
+    lineare, $V$ finitamente generato, allora
+    \begin{equation}
+        \dim{V}=\dim{(\ker{f})}+\dim{(\im{f})}
+    \end{equation}
+\end{proposizione}
+
+\begin{dimostrazione}
+
+    Sia $ \{v_1,...,v_a\}$ una base di $\ker{f}$, e sia $\{v_1,...,v_a,w_1,...,w_b\}$ una base di $V$, ottenuta estendendo la base di $\ker{f}$. \\
+    Basta dimostrare che
+    \begin{equation}
+        \{f(w_1),...,f(w_b)\}
+    \end{equation}
+    è una base di $\im{f}$. $(*)$ \\
+
+    Infatti, se vale $(*)$:
+    \begin{align}
+        \dim{V}&=a+b \\
+        \dim{\ker{f}}&=a \\
+        \dim{\im{f}}&=b
+    \end{align}
+    boh
+
+\end{dimostrazione}
+
+\begin{corollario}
+    Sia $V\xrightarrow{f}W$ lineare, $V,W$ finitamente generati su $\mathbb{K}$. Allora
+    \begin{equation}
+        \dim{\ker{f}}\geq\dim{V}-\dim{W}
+    \end{equation}
+\end{corollario}
+
+\begin{dimostrazione}
+    Per la Prop.
+    \begin{equation}
+        \dim{\ker{f}}=\dim{V}-\dim{( \im{f} )}
+    \end{equation}
+    Ma $\im{f}=W \Rightarrow \dim{(\im{f})}\leq \dim{W}$ quindi
+    \begin{align*}
+        \dim{V}-\dim{( \ker{f} )} &\geq\dim{V}-\dim{W} \Rightarrow \\
+        \Rightarrow \dim{(\ker{f})} &\geq \dim{V}-\dim{W}
+    \end{align*}
+\end{dimostrazione}
+
+\subsection{Composizione di applicazioni lineari}
+
+\begin{proprieta}
+Siano
+\begin{equation}
+    U\xrightarrow{g}V\xrightarrow{f}W
+\end{equation}
+Lineari. Allora
+\begin{equation}
+    f \circ g(v)\to W
+\end{equation}
+È lineare.
+\end{proprieta}
+
+\begin{dimostrazione}
+    Siano $u_{1},u_2 \in U, \lambda_1, \lambda_2\in \mathbb{K}$. \\
+    Dobbiamo dimostrare
+    \begin{equation}
+        f\circ g(\lambda_1u_1 + \lambda_2 u_2) = \lambda_1 f\circ g(u_1)+\lambda_2f\circ g(u_2)=\lambda f(g(u_i))+\lambda_2f(g(u_2))
+    \end{equation}
+    Ma questo è uguale a
+    \begin{equation}
+        f(g(p
+    \end{equation}
+    boh è dimostrato
+\end{dimostrazione}
+
+\begin{definizione}
+
+    Un'applicazione lineare
+    \begin{equation}
+        V \xrightarrow{f} W
+    \end{equation}
+
+    È un \textit{isomorfismo} se esiste
+    \begin{equation}
+        V \xleftarrow{g} W \text{ lineare}
+    \end{equation}
+
+    Tale che
+    \begin{equation}
+        \begin{cases}
+            g\circ f= \text{Id}_v \\
+            f\circ g= \text{Id}_W \\
+        \end{cases}
+    \end{equation}
+\end{definizione}
+
+\begin{definizione}
+    $V,W$ sono \textit{isomorfi} se esiste un'isomorfia
+    \begin{equation*}
+        V\xrightarrow{f} W
+    \end{equation*}
+\end{definizione}
+
+\begin{osservazione}
+    boh
+\end{osservazione}
+
+\begin{notazione}
+    Se $V,W$ sono isomorfi si scrive
+    \begin{equation}
+        V \cong W
+    \end{equation}
+\end{notazione}
+
+
+\end{document}
