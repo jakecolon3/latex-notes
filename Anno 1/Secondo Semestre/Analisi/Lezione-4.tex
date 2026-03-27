@@ -1,0 +1,267 @@
+\input{Lezione-3.tex}
+
+\subsubsection{Lezione 4}
+
+\subsubsection{Proprietà di integrali}
+
+\begin{proprieta}[Linearità dell'integrale]
+    Siano $f,g$ integrabili in $[a,b]$. Allora $\lambda f + \mu g$è integrabile in $[a,b], \forall \lambda,\mu\in \mathbb{R}:$
+
+    \begin{align}
+        & \int_{a}^{b}(\lambda f(x)+\mu g(x))dx = \\
+        \lambda & \int_{a}^{b} f(x)dx+\mu \int_{a}^{b} g(x)dx
+    \end{align}
+\end{proprieta}
+
+\begin{esempio}
+    \begin{align}
+          & \int_{0}^{1}(x^7+3x^6+9x^2-x)dx = \\
+        = & \int_{0}^{1}(x^7)dx + 3\int_{0}^{1}(x^6)dx + 9\int_{0}^{1}(x^2)dx - \int_{0}^{1}(x)dx = \\
+        = & [\frac{x^8}{8}]_0^1 + 3[\frac{x^7}{7}]_0^1 9[\frac{x^3}{3}]_0^1 - [\frac{x^2}{2}]_0^1 = ...
+    \end{align}
+\end{esempio}
+
+\begin{proprieta}[Additività dell'integrale]
+    \label{p_add}
+    Sia $f$ integrabile in $[a,b]$. Fissiamo $c\in(a,b)$. Allora $f$ è integrabile in $[a,c]$ e in $[c,b]$ e si ha
+
+    \begin{equation}
+        \int_{a}^{b}f(x)dx=\int_{a}^{c}f(x)dx+\int_{c}^{b}f(x)dx
+    \end{equation}
+\end{proprieta}
+
+\begin{osservazione}
+    Se $f\in C^1([a,b]), F'=f$ (ipotesi del teo. fond. del calcolo semp.)
+
+    \begin{gather}
+        \int_{a}^{c} f(x) dx = F(c) - F(a) \\
+        \int_{c}^{b} f(x) dx = F(b) - F(c) = \\
+        F(b) - F(a) = \int_{a}^{b} f(x) dx
+    \end{gather}
+\end{osservazione}
+
+\begin{osservazione}
+    Sia $c=a$.
+
+    \begin{equation}
+        \int_{a}^{b} f(x) dx = \int_{a}^{a} f(x) dx + \int_{a}^{b} f(x) dx \Rightarrow \int_{a}^{a} f(x) dx = 0
+    \end{equation}
+
+    Vediamo che per conseguenza di \ref{p_add} un integrale con estremi uguale è uguale a 0.
+\end{osservazione}
+
+\begin{osservazione}
+    Sia $b=a$.
+
+    \begin{gather}
+        \int_{a}^{a} f(x) dx = \int_{a}^{c} f(x) dx + \int_{c}^{a} f(x) dx \Rightarrow \\ 
+        \Rightarrow \int_{c}^{a} f(x) dx = - \int_{a}^{c} f(x) dx
+    \end{gather}
+
+    Vediamo che per conseguenza di \ref{p_add} l'integrale di un intervallo è l'opposto dell'integrale con intervallo opposto.
+\end{osservazione}
+
+\begin{proprieta}[Monotonia dell'integrale]
+    Siano $f,g$ integrabili in $[a,b]$. Supponiamo $f$ minore di $g$ per ogni $x$ nell'intervallo:
+    \begin{equation}
+        f (x)\leq g(x)\ \forall x\in[a,b]
+    \end{equation}
+
+    Allora l'integrale di $f$ nell'intervallo è minore dell'integrale di $g$:
+    \begin{equation}
+        \int_{a}^{b} f(x) dx \leq \int_{a}^{b} g(x) dx
+    \end{equation}
+\end{proprieta}
+
+\begin{osservazione}
+    Vediamo una conseguenza della monotonia dell'integrale:
+    \begin{equation}
+        \left\vert \int_{a}^{b} f(x) dx \right\vert \leq \int_{a}^{b} |f(x)| dx
+    \end{equation}
+
+    E inoltre, dato che per qualsiasi $y$ vale $-|y|\leq y\leq |y|$:
+    \begin{equation}
+        - \int_{a}^{b} |f(x)| dx \leq \int_{a}^{b} f(x) dx \leq \int_{a}^{b} |f(x)| dx
+    \end{equation}
+
+    Però se l'estremo destro è maggiore dell'estremo sinistro:
+    \begin{gather}
+        \int_{b}^{a} f(x) dx = - \int_{a}^{b} f(x) dx \Rightarrow \\
+        \left\vert \int_{b}^{a} f(x) dx \right\vert = \left\vert \int_{a}^{b} f(x) dx \right\vert \leq \int_{a}^{b} |f(x)| dx \\
+        ... \\
+        \left\vert \int_{b}^{a} f(x) dx \right\vert \leq \left\vert \int_{b}^{a} |f(x)| dx \right\vert
+    \end{gather}
+\end{osservazione}
+
+\begin{esercizio}
+    Sia $f(x) \begin{cases}
+        1 & x\in[0,2] \\
+        3 & x\in[2,4]
+    \end{cases}$
+
+    \begin{itemize}
+        \item $f$ è limitata in $[0,4]$?
+        \item $f$ è Lipschitziana in $[0,4]$?
+        \item $f$ è integrabile in $[0,4]$?
+        \item $f$ p integrabile in $[1,3]$?
+    \end{itemize}
+
+    Vediamo che il primo punto è vero: $1\leq f(x)\leq 3$ sempre.\\
+    Il secondo punto è falso dato che $f(x)$ non è continua. \\
+    Il terzo punto è vero dato che $f(x)$ è costante a tratti. \\
+    Il quarto punto è vero per l'additività.
+\end{esercizio}
+
+\subsection{Altre funzioni integrabili}
+
+Ricordiamo cosa sono le funzioni \textit{monotone}.
+
+\begin{definizione}
+    Una funzione $f$ è monotona:
+    \begin{itemize}
+        \item \textbf{crescente} se $x \leq y \mapsto f(x)\leq f(y)$
+        \item \textbf{decrescente} se $x\leq y \mapsto f(x)\geq f(y)$
+    \end{itemize}
+\end{definizione}
+
+\leavevmode \\
+Prendiamo una $f$ monotona crescente. Le sue somme integrali per difetto/eccesso saranno:
+\begin{align}
+    ...
+\end{align}
+
+\begin{teorema}[Integrabilità delle funzioni monotone]
+    Se $f:[a,b]\to \mathbb{R}$ è monotona, allora è integrabile in $[a,b]$.
+\end{teorema}
+
+\begin{dimostrazione}
+    Fisso una partizione $P_n$. Calcoliamo $S^{P_n}-S_{P_n}$:
+    \begin{align}
+        S^{P_n}-S_{P_n} &= \sum_{k=1}^{n} (f(x_k) - f(x_{k-1}))(x_k-x_{k-1}) = \\
+                      &= \frac{b-a}{n}\sum_{k=1}^{n}(f(x_k)-f(x_{k-1})) = \\
+                      &= \text{ somma telescopica } = ... = \\
+                      &= \frac{b-a}{n}(f(b)-f(a)) \xrightarrow{n\to\infty} 0
+    \end{align}
+\end{dimostrazione}
+
+\begin{corollario*}
+    Per la linearità dell'integrale, la combinazione lineare di funzioni monotone è integrabile. Quindi le funzioni con un numero finito di cambi di monotonia \textit{sono integrabili}.
+\end{corollario*}
+
+\begin{teorema}
+    Le funzioni continue in $[a,b]$ sono integrabili. \\
+\end{teorema}
+
+\leavevmode \\
+Non possiamo dimostrare questo teorema con le nostre conoscenze. \\
+
+\begin{teorema}
+    Per l'additività dell'integrale, le funzioni \textit{limitate} in $[a,b]$ con un numero finito di punti di discontinuità sono integrabili in $[a,b]$.
+\end{teorema}
+
+\begin{esercizio}
+    Consideriamo
+    \begin{equation}
+        \Phi(t)=\int_{0}^{t} (sinx)^2 dx
+    \end{equation}
+
+    Fisso $t>0$. Abbiamo che $(sinx)^2$ è continua in $[0,t]$ e quindi integrabile. \\
+    Chiamo $\Phi(t)$ \textit{funzione definita da integrale}. \\
+    Voglio dimostrare che:
+    \begin{equation}
+        0 \leq \Phi(t) \leq \frac{t^3}{3}, \forall t \geq 0
+    \end{equation}
+
+    Abbiamo che $sinx\leq x\ \forall x > 0$. Quindi $(sinx)^2 \leq x^2$. Per la monotonia dell'integrale:
+    \begin{equation}
+        0 \leq \int_{0}^{t} (sinx)^2 dx \leq \int_{0}^{t} x^2 dx = \frac{t^3}{3}
+    \end{equation}
+
+    Abbiamo così una stima di $\Phi(t)$, che non sappiamo calcolare direttamente.
+\end{esercizio}
+
+\begin{esercizio}
+    Dire se le seguenti funzioni sono integrabili:
+    \begin{itemize}
+        \item $f(x)=e^{-x^2}$ in $[a,b]$
+        \item $g(x)=ln(x)$ in $(0,1]$, in $[1,3]$
+        \item $h(x)=\min(\tan(x), 1)$ in $[ -\frac{\pi}{4}, \frac{\pi}{4}]$
+    \end{itemize}
+
+    Vediamo che $f$ è continua perché composizione di funzioni continue. È quindi integrabile in $[a,b]$. \\
+    $g$ non è integrabile in $(0,1]$ dato che non è limitata. È integrabile in $[1,3]$ dato che è continua. \\
+    Ricordiamo che date due funzioni continue $g', h'$, anche $\min(g, h)$ è continua. Vediamo così che $h$ è integrabile dato che è continua e limitata.
+\end{esercizio}
+
+
+\subsubsection{Funzioni non integrabili}
+
+Abbiamo visto che la classe di "funzioni integrabili" è molto ampia. Possiamo quindi chiederci se esistono funzioni (limitate) \textbf{non} integrabili. La risposta è si:
+\begin{definizione}[Funzione di Dirichlet]
+    \begin{equation}
+        f(x) = 
+        \begin{cases}
+            0 & x\in[a,b]\cap \mathbb{Q} \\
+            1 & x\in[a,b]\ \backslash\ \mathbb{Q}
+        \end{cases}
+    \end{equation}
+
+    Questa funzione non è integrabile.
+\end{definizione}
+
+\begin{dimostrazione}
+    \begin{equation}
+        P= \{x_0=a, x_1,..., x_n=b\}
+    \end{equation}
+    boh \\
+    $\forall P$ partizione abbiamo che
+    \begin{equation}
+        S_{P}=0\not=(b-a)=S^P
+    \end{equation}
+\end{dimostrazione}
+
+\begin{osservazione}
+    Sia $f$ integrabile in $[a,b]$, e siano $m,M$ tali che
+    \begin{equation}
+        m \leq f(x) \leq M\ \forall x\in [a,b]
+    \end{equation}
+
+    (Per esempio: $m=\inf f(x),M=\sup f(x)$) \\
+    Per la monotonia dell'integrale:
+    \begin{align}
+        & \int_{a}^{b} m dx \leq \int_{a}^{b} f(x) dx \leq \int_{a}^{b} M dx =\\
+        \text{Per linearità: }=& m(b-a) \leq \int_{a}^{b} f(x) dx \leq M(b-a)
+    \end{align}
+
+    Questo ci da una stima dell'integrale.
+\end{osservazione}
+
+\begin{definizione}
+    La media integrale di $f$ in $[a,b]$ è data da:
+    \begin{equation}
+        \Span{f} := \frac{\int_{a}^{b} f(x) dx}{b-a}
+    \end{equation}
+\end{definizione}
+
+\begin{osservazione}
+    Vediamo dall'osservazione precedente che
+    \begin{equation}
+        m\leq \Span{f}\leq M
+    \end{equation}
+\end{osservazione}
+
+\begin{teorema}[Teorema della media integrale]
+    Sia $f$ continua in $[a,b]$. Allora esiste un punto $x_0\in [a,b]$ t.c.
+    \begin{equation}
+        f(x_0)=\frac{\int_{a}^{b} f(x) dx}{b-a}=\Span{f}
+    \end{equation}
+\end{teorema}
+
+\begin{osservazione}
+    Se $f$ è continua in $[a,b]$ allora assume tutti i valori compresi tra minimo e massimo, e quindi anche il valore della sua media integrale.
+\end{osservazione}
+
+
+
+
+\end{document}

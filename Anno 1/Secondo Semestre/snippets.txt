@@ -3,3 +3,4 @@ itemize
 dimostrazione
 chapter
 notazione
+esercizio
