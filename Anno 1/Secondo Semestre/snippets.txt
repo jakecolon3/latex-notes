@@ -1,6 +1,2 @@
-enumerate
-itemize
-dimostrazione
-chapter
-notazione
-esercizio
+mathcal
+underline
