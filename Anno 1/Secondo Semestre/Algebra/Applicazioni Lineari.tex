@@ -1,0 +1,186 @@
+\input{../preamble.tex}
+
+\begin{document}
+
+\chapter{Applicazioni Lineari}
+\section{Applicazioni lineari e matrici}
+\subsubsection{Lezione 5}
+
+\begin{proposizione}
+Data un'applicazione lineare tra spazi vettoriali finitamente generati, scelta una base per il dominio e per il codominio, possiamo rappresentare l'applicazione lineare come matrice.
+\end{proposizione}
+\leavevmode \\
+Sia $V\xrightarrow{f} W$ lineare. Prendiamo $\mathcal{B} = \{v_1,...,v_n\}$ base di $V$ e $\mathcal{C} = \{u_1,...,u_n\}$ base di $W$
+\begin{definizione}
+    $M_{\mathcal{C}}^{\mathcal{B}}$: la matrice associata a $f$ è definita così:
+    \begin{equation}
+        M_{\mathcal{C}}^{\mathcal{B}} = A = (a_{ij})\in M_{m,n}(\mathbb{K})
+    \end{equation}
+
+    Dove $A_j=X_{\mathcal{C}}(f(v_j))$, con $X_C(f(v_j)) :=$ colonna della $\mathcal{C}$-coordinata di $f(v_j)$
+\end{definizione}
+
+\begin{esempio}
+    Prendiamo $\mathbb{K}=\mathbb{R},\ V=W=\mathbb{R}[x]_{\leq 2}$. Definiamo
+    \begin{gather}
+        \mathbb{R}[x]_{\leq 2}\xrightarrow{f} \mathbb{R}[x]_{\leq 2}
+        p\mapsto p+p'
+    \end{gather}
+    ...
+    \begin{equation}
+        M_{\mathcal{C}}^{\mathcal{B}}(f)=\begin{bmatrix}
+            0 & 1 & 0 \\
+            0 & 1 & 2 \\
+            0 & 0 & 1
+        \end{bmatrix}
+    \end{equation}
+\end{esempio}
+
+\begin{esempio}
+    \begin{equation}
+        V(\mathbb{E}^2)\xrightarrow{\rho_{\theta}} V(\mathbb{E}^2)
+    \end{equation}
+    Dove $\rho_{\theta}$ = "rotazione di angolo $\theta$" \\
+    $\mathcal{B} = \mathcal{C} = $ base di $V(\mathbb{E}^2)$, detta base \textit{ortonaturale} = $\{\underline{i}, \underline{j}\}$
+    \begin{equation}
+        M_{\mathcal{B}}^{\mathcal{B}}(\rho_\theta) = \begin{bmatrix}
+            \cos\theta & -\sin\theta \\
+            \sin\theta & \cos\theta
+        \end{bmatrix}
+    \end{equation}
+\end{esempio}
+
+\begin{esempio}
+    \begin{equation}
+        \mathbb{K}^n \xrightarrow{L_A} \mathbb{K}^m
+    \end{equation}
+
+    Con $A\in M_{m,n}(\mathbb{K})$ \\
+    \begin{gather}
+        \mathcal{S}_n= \text{base standard di } \mathbb{K}^n \\
+        \mathcal{S}_m= \text{base standard di } \mathbb{K}^m \\
+        M_{\mathcal{S}_n}^{\mathcal{S}_m}(L_A)=A
+    \end{gather}
+
+    perché boh
+\end{esempio}
+
+\begin{proposizione}
+    Se $v\in V$
+    \begin{equation}
+        X_{\mathcal{C}}(f(v))= M_{\mathcal{C}}^{\mathcal{B}}(f)\cdot X_{\mathcal{B}}(v)
+    \end{equation}
+
+    Praticamente se conosciamo la matrice associata ad $f$ conosciamo tutto di $f$
+\end{proposizione}
+
+\begin{dimostrazione}
+    Siano $X_{\mathcal{B}}(v)=\left[\begin{smallmatrix}
+        x \\ \vdots \\ x_n
+    \end{smallmatrix}\right]$ \\
+    Cioè $v=x_1v_1+...+x_nv_n$
+    \begin{equation}
+        f(v)=\sum_{j=1}^{n}x_jf(v_j)=x_1f(v_1)+x_2(fv_2)+...+x_nf(v_n)
+    \end{equation}
+
+    Poniamo
+    \begin{equation}
+        M_{\mathcal{C}}^{\mathcal{B}}(f) = (a_{ij})\in M_{n,m}
+    \end{equation}
+    \\
+    Quindi
+    \begin{equation}
+        f(v_j)=a_{1j}w_1+a_{2j}w_2+...+a_{nj}w_n
+    \end{equation}
+    e perciò
+    \begin{align}
+         f(v) &= x_1 \sum_{i=1}^{m}a_{i1}w_i+x_2 \sum_{i=1}^{m}a_{i2}w_i+...+ x_n \sum_{i=1}^{m}a_{in}w_i = \\
+        &= (\sum_{j=1}^{n}a_{1j}x_j)w_1 + (\sum_{j=1}^{n}a_{2j}x_j)w_2 + ... + (\sum_{j=1}^{n}a_{mj}x_j)w_m
+    \end{align}
+
+    Dove ogni sommatoria è uguale all'$n$-esima riga di $A\ (A^n)\cdot X$. \\
+    In conclusione:
+    \begin{equation}
+        X_{\mathcal{C}}(f(v)) = \begin{bmatrix}
+            A^1 \cdot X \\
+            A^2 \cdot X \\
+            \vdots \\
+            A^n\cdot X
+        \end{bmatrix} = A\cdot x = M_{\mathcal{C}}^{\mathcal{B}}(f)X_{\mathcal{B}}(v)
+    \end{equation}
+    C.V.D.
+\end{dimostrazione}
+
+\leavevmode \\
+\leavevmode \\
+
+Siano $V,W$ spazi vettoriali / $\mathbb{K}$
+\begin{equation}
+    \mathcal{L}(V,W) = \{V\xrightarrow{f} W\ |\ f \text{ lineare}\}
+\end{equation}
+Siano $f,g\in \mathcal{L}(V,W)$. Definiamo
+\begin{notazione}
+    \begin{gather}
+        V\xrightarrow{f+g} W \\
+        v\mapsto f(v)+g(v) \\
+        V\xrightarrow{\lambda f} W \\
+        \lambda f \mapsto \lambda f(v) \\
+        V\xrightarrow{\underline{0}} W \\
+        v\mapsto \underline{0}
+    \end{gather}
+\end{notazione}
+$\mathcal{L}(V,W)$ con queste operazioni è uno spazio vettoriale / $\mathbb{K}$. L'elemento neutro è $\underline{0}$
+
+\begin{proposizione}
+    Ipotesi: $V,W$ finitamente generati, $\dim V = n$, $\dim W = m$ \\
+    Tesi: se $\mathcal{B}$ base di $V$, $\mathcal{C}$ base di $W$, l'applicazione
+    \begin{gather}
+        \mathcal{L}(V,W) \xrightarrow{M_{\mathcal{C}}^{\mathcal{B}}} M_{m,n}(\mathbb{K}) \\
+        f\mapsto M_{\mathcal{C}}^{\mathcal{B}}(f)
+    \end{gather}
+    È un isomorfismo.
+\end{proposizione}
+
+\begin{dimostrazione}
+    È banale.
+\end{dimostrazione}
+
+\begin{proposizione}
+    Siano
+    \begin{equation}
+        U\xrightarrow{g} V\xrightarrow{f} W
+    \end{equation}
+    Lineari, con $U,V,W$ finitamente generati, e siano
+    \begin{itemize}
+        \item $\mathcal{A} =$ base di $U$
+        \item $\mathcal{V} =$ base di $V$
+        \item $\mathcal{C} =$ base di $W$
+    \end{itemize}
+
+    Allora
+    \begin{equation}
+        M_{\mathcal{C}}^{\mathcal{A}}(f\circ g) = M_{\mathcal{C}}^{\mathcal{B}}(f) \circ M_{\mathcal{B}}^{\mathcal{A}}(g)
+    \end{equation}
+\end{proposizione}
+
+\begin{dimostrazione}
+    Sia $u\in U$.
+    \begin{gather}
+        X_{\mathcal{C}}(f\circ g(u)) = X_{\mathcal{C}}(f(g(u))) \\
+        X_{\mathcal{C}}(f(v))=M_{\mathcal{C}}^{\mathcal{B}}(f)\circ X_{\mathcal{B}}(v) \\
+        \downarrow \\
+        X_{\mathcal{C}}(f(g(u))) = M_{\mathcal{C}}^{\mathcal{B}}(f) \cdot X_{\mathcal{B}}(g(u)) = M_{\mathcal{C}}^{\mathcal{B}}(f)\cdot M_{\mathcal{B}}^{\mathcal{A}}\cdot X_{\mathcal{A}}(u)
+    \end{gather}
+    Quindi
+    \begin{equation}
+        X_{\mathcal{C}}(f\circ g(u))=(M_{\mathcal{C}}^{\mathcal{B}}(f)\cdot M_{\mathcal{B}}^{\mathcal{A}}(g))\cdot X_{\mathcal{A}}(u)
+    \end{equation}
+    Ma sappiamo che
+    \begin{gather}
+        X_{\mathcal{C}}(f\circ g(u))=M_{\mathcal{C}}^{\mathcal{A}}(f\circ g)X_{\mathcal{A}}(u) \\
+        \Downarrow \\
+        M_{\mathcal{C}}^{\mathcal{B}}(f)\cdot M_{\mathcal{B}}^{\mathcal{A}}(g)=M_{\mathcal{C}}^{\mathcal{A}}(f\circ g)
+    \end{gather}
+\end{dimostrazione}
+
+\end{document}
