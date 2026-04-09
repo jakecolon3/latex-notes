@@ -1,0 +1,215 @@
+\documentclass[11pt]{article}
+\usepackage{xcolor}
+\usepackage[italian]{babel}
+\usepackage{amsmath, amsthm, amsfonts}
+\usepackage[left=1.5cm, right=1.5cm, bottom=1cm, top=1cm]{geometry}
+
+\usepackage{mdframed}
+\mdfsetup{skipabove=1em,skipbelow=0em}
+\theoremstyle{definition}
+\newmdtheoremenv[nobreak=true]{definizione}{Definizione}
+\newmdtheoremenv[nobreak=true]{proposizione}{Proposizione}
+\newmdtheoremenv[nobreak=true]{lemma}{Lemma}
+\newmdtheoremenv[nobreak=true]{teorema}{Teorema}
+% \newmdtheoremenv[nobreak=true]{dimostrazione}{Dimostrazione}
+\newtheorem{esempio}{Esempio}
+\newtheorem{esercizio}{Esercizio}
+\newtheorem{corollario}{Corollario}
+\newtheorem*{corollario*}{Corollario}
+
+\newtheorem*{notazione}{Notazione}
+\surroundwithmdframed{notazione}
+\newtheorem*{definizione*}{Definizione}
+\surroundwithmdframed{definizione*}
+
+\newtheorem*{esempio*}{Esempio}
+\newtheorem*{proprieta}{Proprietà}
+
+\theoremstyle{remark}
+\newtheorem*{osservazione}{Osservazione}
+\newtheorem*{dimostrazione}{Dimostrazione}
+
+\newcommand{\Span}[1]{\left\langle{#1}\right\rangle}
+\newcommand{\im}[1]{\text{Im}#1}
+
+\pagestyle{empty}
+\twocolumn
+
+\begin{document}
+
+\section*{Limiti notevoli}
+\subsubsection*{$x\to 0$}
+\begin{itemize}
+    \item $\lim_{x\to0} \frac{\sin(x)}{x}=1$
+    \item $\lim_{x\to0} \frac{\arcsin(x)}{x}=1$
+    \item $\lim_{x\to0} \frac{\tan(x)}{x}=1$
+    \item $\lim_{x\to0} \frac{\arctan(x)}{x}=1$
+    \item $\lim_{x\to0} \frac{\cos(x)}{x^2}= \frac{1}{2}$
+    \item $\lim_{x\to0} \frac{e^x-1}{x}=1$
+    \item $\lim_{x\to0} \frac{\ln(1+x)}{x}=1$
+\end{itemize}
+
+\subsubsection*{$x\to \infty$}
+\begin{itemize}
+    \item $\lim_{x\to+\infty}(1+ \frac{\alpha}{x})^x=e^\alpha$
+    \item $\lim_{x\to+\infty}{x^{ \frac{1}{x}}}=1$
+    \item $\lim_{x\to+\infty}P(x)^{ \frac{1}{x}}=1$
+\end{itemize}
+
+\subsection*{Gerarchia infiniti}
+\begin{equation*}
+    (\log_Bn)^\alpha < n^\alpha < A^n < n! < n^n
+\end{equation*}
+
+\section*{Derivate}
+\begin{itemize}
+    \item $[ x^{\alpha}]'=\alpha x^{\alpha - 1}$
+    \item $[ e^x ]'= e^x$
+    \item $[ \sin(x)]'=\cos(x)$
+    \item $[ \cos(x)]'=-\sin(x)$
+    \item $[ \tan(x)]'= \frac{1}{\cos^2(x)}$
+    \item $[ \arcsin(x)]'= \frac{1}{\sqrt{1-x^2}}$
+    \item $[ \arccos(x)]'= -\frac{1}{\sqrt{1-x^2}}$
+    \item $[ \arctan(x)]'=\frac{1}{1+x^2}$
+\end{itemize}
+
+\subsection*{Regole di derivazione}
+\begin{itemize}
+    \item $[kf(x)]'=kf'(x)$
+    \item $[f(x)\pm g(x)]'=f'(x)\pm g'(x)$
+    \item $[f(x)g(x)]'=f'(x)g(x) + f(x)g'(x)$
+    \item $[\frac{f(x)}{g(x)}]'=\frac{f'(x)g(x) - f(x)g'(x)}{g(x)^2}$
+    \item $[f(g(x))]'=f'(g(x))g'(x)$
+\end{itemize}
+
+\section*{Integrali}
+\begin{itemize}
+    \item $\int_{a}^{b} 1 dx= \left[x\right]_a^b$
+    \item $\int_{a}^{b} x^n dx= \left[ \frac{x^{n+1}}{n+1}\right]_a^b$
+    \item $\int_{a}^{b} \sin x dx= \left[-\cos x\right]_a^b$
+    \item $\int_{a}^{b} \cos x dx= \left[\sin x\right]_a^b$
+    \item $\int_{a}^{b} \frac{1}{\cos^2 x} dx= \left[\tan x\right]_a^b$
+    \item $\int_{a}^{b} \frac{1}{\sin^2 x} dx= \left[- \frac{1}{\tan x}\right]_a^b$
+    \item $\int_{a}^{b} \frac{1}{x^2} dx= \left[\arctan x\right]_a^b$
+    \item $\int_{a}^{b} \frac{1}{x} dx= \left[\ln|x|\right]_a^b$
+    \item $\int_{a}^{b} e^x dx=\left[ e^x \right]_a^b$
+\end{itemize}
+
+\subsection*{Regole di integrazione}
+\begin{itemize}
+    \item $\int_{a}^{b} k\cdot f(x) dx = k\int_{a}^{b} f(x) dx$
+    \item $\int_{a}^{b} f(x)\pm g(x) dx =\\= \int_{a}^{b} f(x) dx \pm \int_{a}^{b} g(x) dx$
+\end{itemize}
+
+\subsection*{Media integrale}
+\begin{equation*}
+    \Span{f} = \frac{1}{b-a}\int_{a}^{b} f(x) dx
+\end{equation*}
+
+\section*{Serie numeriche}
+\subsection*{Serie geometrica}
+\begin{equation*}
+    \sum_{n=p}^{+\infty}x^n = x^p\sum_{i=0}^{+\infty}x^i=\begin{cases}
+        +\infty & \text{ se } x>1 \\
+        x^p\frac{1}{1-x} & \text{ se } -1<x<1 \\
+        \not\exists & \text{ se } x\leq 1
+    \end{cases}
+\end{equation*}
+
+\subsection*{Serie armoniche}
+\begin{equation*}
+    \sum_{n=0}^{+\infty} \frac{1}{n^{\alpha}}:\begin{cases}
+        \text{Diverge} & \text{ se }\alpha\leq 1 \\
+        \text{Converge} & \text{ se } \alpha > 1
+    \end{cases}
+\end{equation*}
+
+\subsection*{Serie telescopiche}
+Sia $a_n$ una serie tale che $a_n = b_{n+1} - b_n$. Si ha
+\begin{equation*}
+    S_n = \sum_{k=1}^{n}a_k = b_{n+1}-b_1
+\end{equation*}
+Quindi
+\begin{equation*}
+    \lim_{n\to+\infty}S_n = \sum_{n=1}^{+\infty}a_n = \lim_{n\to+\infty}b_{n+1}-b_1
+\end{equation*}
+
+\newpage
+\subsection*{Criteri}
+\begin{itemize}
+    \item Radice
+        \begin{equation*}
+            \sum_{n=0}^{+\infty}a_n: \begin{cases}
+                \text{Diverge} & \lim_{n\to+\infty}\sqrt[n]{a_n} > 1\\
+                \text{Converge} & \lim_{n\to+\infty}\sqrt[n]{a_n} < 1
+            \end{cases}
+        \end{equation*}
+    \item Rapporto
+        \begin{equation*}
+            \sum_{n=0}^{+\infty}a_n: \begin{cases}
+                \text{Diverge} & \lim_{n\to+\infty} \frac{a_{n+1}}{a_n} > 1\\
+                \text{Converge} & \lim_{n\to+\infty} \frac{a_{n+1}}{a_n} < 1\\            \end{cases}
+        \end{equation*}
+    \item Leibnitz
+        \begin{equation*}
+            \text{Se }\sum_{n=0}^{+\infty}(-1)^na_n: \begin{cases}
+                a_n\geq 0 \\
+                a_n \text{ è monotona decrescente} \\
+                \lim_{n\to+\infty}a_n=0
+            \end{cases} \\
+        \end{equation*}
+        Allora converge
+\end{itemize}
+
+\section*{Serie di potenze}
+\subsection*{Raggio di convergenza}
+Sia $S(n)=\sum_{n=0}^{+\infty}a_n(x-x_0)^n$
+\begin{itemize}
+    \item Se $\lim_{n\to+\infty}\sqrt{|a_n|}=l$ o $\lim_{n\to+\infty}|\frac{a_{n+1}}{a_n}|=l$:
+        $\begin{cases}
+            \rho = \frac{1}{l} & \text{ se } l\in(0, +\infty) \\
+            \rho = \infty & \text{ se } l=0 \\
+            \rho = 0 & \text{ se } l=\infty
+        \end{cases}$
+\end{itemize}
+Calcolato $\rho$ si ha che $S(n)$ converge in $(x_0 - \rho, x_0 + \rho)$
+
+\subsection*{Derivata nel centro}
+Sia $S(x)=\sum_{n=0}^{+\infty}a_n(x-x_0)^n$
+\begin{equation*}
+    S^{(k)}(x_0) = k!a_k
+\end{equation*}
+
+\section*{Taylor}
+\begin{equation*}
+    T_n(f(x);x_0)=\sum_{k=0}^{n}\frac{f^{(k)}(x_0)}{k!}(x-x_0)^k
+\end{equation*}
+\subsection*{Funzioni elementari}
+\begin{itemize}
+    \item $e^x$
+        \begin{equation*}
+            T_n(e^x)=\sum_{k=0}^{n} \frac{x^k}{k!}
+        \end{equation*}
+    \item Seno/coseno
+        \begin{gather*}
+            T_{2n+1}(\sin(x);0) = \sum_{k=0}^{n} \frac{(-1)^kx^{2k+1}}{(2k+1)!}\\
+            T_{2n}(\cos(x);0) = \sum_{k=0}^{n} \frac{(-1)^kx^{2k}}{(2k)!}
+        \end{gather*}
+    \item $\frac{1}{1\pm x}$
+        \begin{gather*}
+            T_n(\tfrac{1}{1-x};0)=\sum_{k=0}^{n}x^k \\
+            T_n(\tfrac{1}{1+x};0)=\sum_{k=0}^{n}(-1)^kx^k \\
+            T_{2n}(\tfrac{1}{1+x^2};0)=\sum_{k=0}^{n}(-1)^kx^{2k}
+        \end{gather*}
+    \item Logaritmo
+        \begin{equation*}
+            T_n(\log(1+x);0)= \sum_{k=1}^{n}(-1)^k \frac{x^k}{k}
+        \end{equation*}
+    \item $\arctan$
+        \begin{equation*}
+            T_{2n+1}(\arctan(x);0)= \sum_{k=0}^{n} \frac{(-1)^kx^{2k+1}}{2k+1}
+        \end{equation*}
+\end{itemize}
+
+
+\end{document}
