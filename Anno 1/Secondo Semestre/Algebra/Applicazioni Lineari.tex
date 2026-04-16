@@ -183,4 +183,69 @@ $\mathcal{L}(V,W)$ con queste operazioni è uno spazio vettoriale / $\mathbb{K}$
     \end{gather}
 \end{dimostrazione}
 
+\subsubsection{Lezione 6}
+\subsubsection{Problema}
+
+Sia 
+\begin{equation}
+    V\xrightarrow{f} W
+\end{equation}
+Finitamente generata su $\mathbb{K}$. \newline
+Trovare una base di
+\begin{enumerate}
+    \item $\im(f)\subset W$ \\
+    \item $\ker f \subset V$
+\end{enumerate}
+
+Primo passo:
+\begin{dimostrazione}
+    Siano $\mathcal{B} = \{v_1,...,v_n\}$ e $\mathcal{C}= \{w_1,...,w_n\}$ basi di $V$ e $W$. Allora
+    \begin{equation}
+        M^{\mathcal{B}}_{\mathcal{C}}(f) = A\in M_{m,n}(\mathbb{K})
+    \end{equation}
+    E $\forall v\in V$
+    \begin{equation}
+        X_{\mathcal{C}}(f(v))=A\cdot X_B(v)
+    \end{equation}
+
+    Ricordiamo che
+    \begin{equation}
+        A_j=A\cdot \underline{e}_j = A\cdot \left[\begin{smallmatrix}
+            0 \\ \vdots \\ 0 \\ 1 \\ 0 \\ \vdots \\ 0
+        \end{smallmatrix}\right] = j
+    \end{equation}
+    Quindi
+    \begin{equation}
+        A_j= X_e(f(v_j))
+    \end{equation}
+
+    Conseguenza: per risolvere (1) estraggo una base di $\Span{A_1,...,A_n} \{A_{i1}, A_{i2},...,A_{ik}\}$ con $1\leq i_1 < i_2 < ... < i_j \leq i_k \Rightarrow$ Una base di $\im f$ è $\{f(v_{i1}),...,f(v_{ik})\}$. \newline
+    Vogliamo quindi risolvere il problema:
+    \begin{equation}
+        \text{Data } A\in M_{m,n}(\mathbb{K})
+    \end{equation}
+    Trovare una base di $\Span{A_1,...,A_n}\subset \mathbb{K}^m$
+\end{dimostrazione}
+
+\begin{definizione}[Matrici a scala per colonna]
+    Una matrice è a scala per colonna se, scorrendo le sue colonne, il primo valore non nullo della colonna ha indice inferiore del precedente.
+\end{definizione}
+\begin{esempio}[Matrice a scala per colonna]
+    \begin{equation}
+        \begin{bmatrix}
+            3 & 0 & 0 \\
+            0 & 1 & 0 \\
+            0 & 1 & -1
+        \end{bmatrix}
+    \end{equation}
+\end{esempio}
+
+\begin{proprieta}
+    Sia $A\in M_{m, n}(\mathbb{K})$ a scala per colonna. Una base di
+    \begin{equation}
+        \Span{A_1,...,A_n}
+    \end{equation}
+    è data dalla lista delle colonne non nulle.
+\end{proprieta}
+
 \end{document}
