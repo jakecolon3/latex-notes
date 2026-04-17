@@ -1,0 +1,127 @@
+\input{./Lezione-4.tex}
+
+
+\section{Primitive e integrali indefiniti}
+\begin{definizione}
+    Data $f: I \subseteq \mathbb{R} \to \mathbb{R}$, una funzione $F$ è una \textit{primitiva} di $f$ in $I$ se:
+    \begin{itemize}
+        \item $F$ è derivabile in $I$
+        \item $\frac{d}{dx}F(x)=f(x)$ in $I$
+    \end{itemize}
+\end{definizione}
+
+\subsubsection{Problema}
+Data $f$, determinare $F$. \\
+Chiediamoci prima: quante primitive esistono? Con
+\begin{gather}
+    F \text{ primitiva in } [a,b] \to F'(x)=f \\
+    G \text{ primitiva in } [a,b] \to G'(x)=f
+\end{gather}
+Allora
+\begin{gather}
+    \frac{d}{dx}(F(x)-G(x))= F'-G' = f-f= 0\ \ \forall x \in [a,b] \\
+    F(x)-G(x)= \text{ costante per il teorema del valore di Lagrange} \\
+    F(x)=G(x) + c\ \ c \in \mathbb{R}
+\end{gather}
+Quindi abbiamo che le primitive di $f$ sono:
+\begin{equation}
+    \{F(x)+c, c\in \mathbb{R}, F'=f\}
+\end{equation}
+
+\begin{teorema}[Teorema fondamentale del calcolo integrale]
+    Sia $f$ continua in $[a,b]$. $F$ è una primitiva di
+    \begin{gather*}
+        f: \frac{dF}{dx} = f \\
+        \iff \\
+        F(x) = \int_{x_0}^{x} f(t) dt + c \\
+        \text{dove } x_0 \in [a,b]
+    \end{gather*}
+\end{teorema}
+
+\begin{dimostrazione}
+    Sia $F: F' = f$
+    \begin{equation}
+        G(x) = \int_{x_0}^{x} f(t) dt
+    \end{equation}
+    $G$ è una primitiva perché $G' = f$. $F$ e $G$ differiscono per una costante:
+    \begin{equation*}
+        F(x) = G(x) + c
+    \end{equation*}
+    ???
+\end{dimostrazione}
+
+Come usiamo il teorema fondamentale del calcolo integrale (TFdCI) per gli integrali definiti: \\
+\begin{gather}
+    F(b) = \int_{x_0}^{b} f(t) dt + c \\
+    F(a) = \int_{x_0}^{a} f(t) dt \\
+    \mapsto F(b) - F(a) = \int_{x_0}^{b} f(t) dt = F(a) = \int_{x_0}^{a} f(t) dt =\\
+    = \int_{x_0}^{b} f(t) dt + \int_{a}^{x_0} f(t) dt = \\
+    = \int_{a}^{b} f(t) dt
+\end{gather}
+Questo era già valido per funzioni Lipschitziane o di classe 1, ma così è dimostrato per \textit{ogni funzione continua}.
+
+\begin{definizione}[Integrale indefinito]
+    L'insieme delle primitive di una funzione si chiama \textit{integrale indefinito} e si indica con
+    \begin{equation}
+        \int f(t) dt = \{F(t) + c, c\in \mathbb{R}\}
+    \end{equation}
+\end{definizione}
+
+\begin{esempio}
+    Polinomi:
+    \begin{gather}
+        \frac{d}{dx} \frac{x^{n+1}}{n+1}=x^n \Rightarrow \int x^n dx = \frac{x^{n+1}}{n+1}+c \\
+        \frac{d}{dx} \sum_{k=0}^{n}a_{k}x^k=\sum_{k=0}^{n}a_k \frac{d}{dx}x^k = \sum_{k=0}^{n}a_k kx^{k-1}
+    \end{gather}
+\end{esempio}
+
+\section{Calcolare integrali indefiniti}
+\begin{proprieta}
+    Dalla proprietà di derivazione di funzioni composte si ha che:
+    \begin{equation}
+        \int f(\alpha x) dx = \frac{\int f dx}{\alpha} + c
+    \end{equation}
+\end{proprieta}
+
+Possiamo generalizzare:
+\begin{equation}
+    \frac{d}{dx}F(\Phi(x))= \frac{d}{dx}\Phi(x) \cdot \frac{d}{d\Phi}F(\Phi(x))
+\end{equation}
+Da cui:
+\begin{equation}
+    \int \frac{d}{dx}\Phi(x) \frac{d}{d\Phi}F(\Phi(x))dx = F(\Phi(x)) + c
+\end{equation}
+
+\begin{esempio}
+    \begin{gather}
+        \int 2x\cos(x^2)dx \\
+        t = \Phi(x)=x^2 \mapsto dt = \Phi'(x)dx \\
+        = \int \cos t dt = \sin t + c = \sin(x^2) +c
+    \end{gather}
+\end{esempio}
+
+\subsection{Integrazione per sostituzione}
+Se abbiamo un integrale del tipo:
+\begin{equation}
+    \int f(\Phi(x)) \Phi'(x) dx
+\end{equation}
+Possiamo risolverlo per sostituzione:
+
+\begin{definizione}[Integrale per sostituzione]
+    \leavevmode \\
+    \begin{itemize}
+        \item Sostituzione $ t = \Phi(x)$
+        \item Sostituisco $dt = \Phi'(x)dx$
+        \item L'integrale diventa:
+    \end{itemize}
+    \begin{equation}
+        \int f(t) dt = F(t) + c = F(\Phi(x)) + c
+    \end{equation}
+\end{definizione}
+
+Questo procedimento si può generalizzare anche per funzioni con esponenti reali:
+\begin{equation}
+    \int (\Phi(x))^{\alpha} \Phi'(x)dx = \int t^\alpha dt = \frac{t^{\alpha + 1}}{\alpha + 1} + c = \frac{(\Phi(x))^{\alpha + 1}}{\alpha + 1} + c
+\end{equation}
+
+\end{document}
