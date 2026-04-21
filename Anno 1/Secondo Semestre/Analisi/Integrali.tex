@@ -1,6 +1,7 @@
 \input{./Lezione-4.tex}
 
 
+\subsubsection{Lezione 5}
 \section{Primitive e integrali indefiniti}
 \begin{definizione}
     Data $f: I \subseteq \mathbb{R} \to \mathbb{R}$, una funzione $F$ è una \textit{primitiva} di $f$ in $I$ se:
@@ -75,7 +76,7 @@ Questo era già valido per funzioni Lipschitziane o di classe 1, ma così è dim
     \end{gather}
 \end{esempio}
 
-\section{Calcolare integrali indefiniti}
+\section{Metodi di integrazione}
 \begin{proprieta}
     Dalla proprietà di derivazione di funzioni composte si ha che:
     \begin{equation}
@@ -123,5 +124,40 @@ Questo procedimento si può generalizzare anche per funzioni con esponenti reali
 \begin{equation}
     \int (\Phi(x))^{\alpha} \Phi'(x)dx = \int t^\alpha dt = \frac{t^{\alpha + 1}}{\alpha + 1} + c = \frac{(\Phi(x))^{\alpha + 1}}{\alpha + 1} + c
 \end{equation}
+
+\subsubsection{Lezione 6}
+\subsection{Integrazione per parti}
+Dal TFCI:
+\begin{equation}
+    \int_{a}^{b} \frac{d}{dx}f dx = f(b)-f(a) = [ f(x) ]^{x=b}_{x=a}
+\end{equation}
+Siano $f,g$ derivabili. Sappiamo che il prodotto di queste funzioni $fg$ è anch'esso derivabile:
+\begin{equation}
+    \frac{d}{dx}(fg) = \left(\frac{d}{dx}f\right)g + f \frac{d}{dx}g
+\end{equation}
+Integrando tra a e b:
+\begin{gather}
+    \int_{a}^{b} \frac{d}{dx}(fg) dx = \int_{a}^{b} \left[\left( \frac{d}{dx}f\right)g + f \frac{d}{dx}g\right] dx = \\
+    = \int_{a}^{b} ( \frac{df}{dx})g dx + \int_{a}^{b} f \frac{d}{dx}g dx = \\
+    = \int_{a}^{b} \frac{df(x)}{dx} dx = [f(x)g(x)]_a^b - \int_{a}^{b} f(x) \frac{dg(x)}{dx} dx
+\end{gather}
+Questa è la formula di \textit{integrazione per parti}.
+
+\begin{definizione}[Formula di integrazione per parti]
+    \begin{equation}
+    \int_{a}^{b} g(x) \frac{df(x)}{dx} dx = [f(x)g(x)]_a^b - \int_{a}^{b} f(x) \frac{dg(x)}{dx} dx
+    \end{equation}
+\end{definizione}
+\leavevmode \\
+Con questa formula possiamo risolvere integrali del tipo:
+\begin{itemize}
+    \item $\int_{a}^{b} xe^{\alpha x} dx = \frac{1}{\alpha} \left(\left[xe^{\alpha x}- \frac{e^{\alpha x}}{\alpha}\right]_a^b\right)$
+    \item $\int_{a}^{b} x\sin(x) dx = \left[-x\cos(x) + \sin(x)\right]_a^b$
+    \item $\int_{a}^{b} x\cos(x) dx = \left[x\sin(x) + \cos(x)\right]_a^b$
+    \item $\int_{a}^{b} \ln(x) dx = \int_{a}^{b} 1\cdot \ln(x) dx = \left[x(\ln(x) - 1\right]_a^b$
+    \item $\int_{a}^{b} \arctan(x) dx = \int_{a}^{b} 1\cdot \arctan(x) dx = \left[x\arctan(x) - \ln\left(\sqrt{1+x^2}\right)\right]_a^b$
+    \item ecc.
+\end{itemize}
+Questa formula vale anche per integrali indefiniti.
 
 \end{document}
