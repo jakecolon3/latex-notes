@@ -248,4 +248,181 @@ Primo passo:
     è data dalla lista delle colonne non nulle.
 \end{proprieta}
 
+\subsubsection{Lezione 7}
+\subsection{Diagonalizzazione}
+Sia $V \xrightarrow{f} V$ un applicazione lineare. $f$ è diagonalizzabile se $\exists \mathcal{B} = \{v_1,...,v_n\}$ base di $V$ tale che:
+\begin{equation}
+    M_{\mathcal{B}}(f) = \begin{bmatrix}
+        \lambda_1 & 0 & ... & 0 & 0 \\
+        0  & \lambda_2 & ...
+    \end{bmatrix}
+\end{equation}
+
+Dato $\lambda \in \mathbb{K}$:
+\begin{gather}
+    V_{\lambda}(f) = \ker (\lambda Id_V - f) \subset V \rightarrow \\
+    V \xrightarrow{Id_V - f} V \\
+    v \mapsto \lambda v-f(v)
+\end{gather}
+\begin{esempio}
+    Supponiamo che $f$ sia diagonalizzabile e che valga (*). Se $\lambda \not \in \{\lambda_1,...,\lambda_n\}$, allora:
+    \begin{equation}
+        V_\lambda (f) = \{\underline{0}\}.
+    \end{equation}
+    Perché?
+    \begin{equation}
+        M_{\mathcal{B}}^{\mathcal{B}} (\lambda Id - f) = M^{\mathcal{B}}_{\mathcal{B}}( \lambda Id_V ) - M^{\mathcal{B}}_{\mathcal{B}}(f)
+    \end{equation}
+    Se $\lambda \in \{\lambda_1,...,\lambda_n\},\ V_{\lambda}(f)\not=\{\underline{0}\}$. 
+\end{esempio}
+Ricordiamo:
+\begin{itemize}
+    \item $\lambda\in \mathbb{K}$ è un \textit{autovalore di} $f$ se $V_{\lambda}(f)\not=\{\underline{0}\}.$
+    \item $\underline{0}\not= v\in V$ è un \textit{autovettore di} $f$ se $\exists \lambda\in \mathbb{K}$ t.c. $v\in V_{\lambda}(f) \rightarrow f(v)=\lambda v$.
+\end{itemize}
+
+\begin{osservazione}
+    $V \xrightarrow{f} V$ è diagonalizzabile s.se esiste una base di $V$ i cui elementi sono autovettori di $f$.
+\end{osservazione}
+
+\begin{notazione}
+    $A\in M_{n,m}(\mathbb{K})$ è \underline{diagonalizzabile} se
+    \begin{equation}
+        \mathbb{K}^n \xrightarrow{L_A} \mathbb{K}^n
+    \end{equation}
+    è diagonalizzabile. Questo equivale a "$A$ è conuigata a una matrice diagonale". Inoltre:
+    \begin{itemize}
+        \item $\mathcal{S} =$ base standard di $\mathbb{K}$.
+        \item $\mathcal{B} =$ base che diagonalizza $L_A$.
+    \end{itemize}
+    \begin{equation}
+        \begin{bmatrix}
+            \lambda_1 && 0 \\
+                      & \ddots &\\
+            0 && \lambda_n
+        \end{bmatrix} = ...
+    \end{equation}
+\end{notazione}
+
+Perché diagonalizzare? Supponiamo che $A\in M_{n,m}(\mathbb{K})$ sia diagonalizzabile:
+\begin{gather}
+    A=G^{-1}\cdot \Lambda \cdot G \\
+    \text{con }\Lambda = \begin{bmatrix}
+            \lambda_1 && 0 \\
+            & \ddots &\\
+            0 && \lambda_n
+    \end{bmatrix}
+\end{gather}
+boh \\
+
+Supponiamo che $A$ sia diagonalizzabile.
+\begin{equation}
+    A = G^{-1}\cdot \Lambda \cdot G
+\end{equation}
+Allora
+\begin{gather}
+    e^A = 1_n + G^{-1}\cdot \Lambda \cdot G + \frac{1}{2}G^{-1}\cdot \Lambda^2 \cdot G + \frac{1}{3}G^{-1}\cdot \Lambda^3 \cdot G + ... = \\
+    = G^{-1}(1_n + \Lambda + \frac{1}{2} \Lambda ^2 + \frac{1}{3} \Lambda^3 + ...)\cdot G = boh = \\
+    = \begin{bmatrix}
+        e^{\lambda_1} && 0 \\
+        & e^{\lambda_2} & \\
+        0 && e^{\lambda_1}
+    \end{bmatrix}
+\end{gather}
+
+\section{Determinanti}
+\begin{definizione}
+    Con $R$ anello commutativo con 1, un'applicazione lineare
+    \begin{equation}
+        M_{n,m}(R)\xrightarrow{\det_n} R
+    \end{equation}
+    Ricorsivamente:
+    \begin{itemize}
+        \item $\det_1((a))=a$
+        \item Se $\det_{n - 1}$ è stato definito, poniamo
+            \begin{equation}
+                \det_n(A) := \sum_{j=1}^{n}(-1)^{n+j}\cdot a_{n,j}\cdot \det_{n-1}(A^n_j)
+            \end{equation}
+            Dove $a_{n,j}$ sono le entrate all'ultima riga di $A$ e $A^i_j$ è la matrice $(n-1) \times (n-1)$ ottenuta da $A$ eliminando riga $i$ e colonna $j$.
+    \end{itemize}
+\end{definizione}
+
+\begin{esempio}
+    \begin{equation}
+        \det_2 \begin{bmatrix}
+            a_{11} & a_{12} \\
+            a_{21} & a_{22}
+        \end{bmatrix} = -a_{21}\cdot a_{12} + a_{22} \cdot a_{11}=a_{11}\cdot a_{22} - a_{21}\cdot a_{12}
+    \end{equation}
+\end{esempio}
+
+\begin{notazione}
+    \begin{equation}
+        \det A = |A|
+    \end{equation}
+\end{notazione}
+
+\begin{proprieta}
+    Sia $A\in M_{n,n}(R)$ con una colonna nulla. Allora $|A| = 0$.
+    \begin{dimostrazione}
+        Per induzione su $n$.
+        \begin{equation}
+            n=1 \ \ \ \det ((a)) = a = 0.
+        \end{equation}
+        Passo induttivo: \\
+        \begin{gather}
+            \text{Assumiamo vero per matrici }(n-1) \times (n-1)\\
+            A = \begin{bmatrix}
+                a_{11} & \cdots & 0 & \cdots \\
+                       && \vdots && \\
+                a_{1n}& \cdots & 0 & \cdots & a_{nn}
+            \end{bmatrix}
+        \end{gather}
+        boh
+    \end{dimostrazione}
+\end{proprieta}
+
+\begin{proprieta}
+    Sia $A\in M_{n,n}(R)$ con $a_{ij}=0$ se $i<j$.
+    \begin{equation}
+        A = \begin{bmatrix}
+            a_{11} \\
+              & \ddots & \\
+            * &   & a_{nn}
+        \end{bmatrix}
+    \end{equation}
+    Allora $\det A=a_{11}\cdot a_{22}...\cdot a_{nn}$.
+    \begin{dimostrazione}
+        vedi
+    \end{dimostrazione}
+\end{proprieta}
+
+\subsubsection{Calcolare determinanti}
+Alcune proprietà:
+\begin{enumerate}
+    \item Se scambio due colonne diverse il determinante cambia segno.
+    \item Se aggiungo a una colonna un multiplo di un'altra colonna il determinante non cambia.
+    \item Se moltiplico una colonna per $\lambda$ il determinante viene moltiplicato per $\lambda$.
+\end{enumerate}
+\begin{esempio}
+    \begin{equation}
+        A =\begin{bmatrix}
+            3 & 1 & 3 \\
+            2 &-1 & 5 \\
+            1 & 0 & 1
+            \end{bmatrix} \mapsto \begin{bmatrix}
+            1 & 3 & 3 \\
+            -1& 2 & 5\\
+            0 & 1 & 1
+            \end{bmatrix} \mapsto \begin{bmatrix}
+            1 & 0 & 0\\
+            -1& 5 & 8 \\
+            0 & 1 & 1
+        \end{bmatrix}
+    \end{equation}
+    boh $\det A = 3$
+\end{esempio}
+
+
+
 \end{document}
