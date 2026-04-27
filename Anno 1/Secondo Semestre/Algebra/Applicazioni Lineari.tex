@@ -10,14 +10,14 @@
 Data un'applicazione lineare tra spazi vettoriali finitamente generati, scelta una base per il dominio e per il codominio, possiamo rappresentare l'applicazione lineare come matrice.
 \end{proposizione}
 \leavevmode \\
-Sia $V\xrightarrow{f} W$ lineare. Prendiamo $\mathcal{B} = \{v_1,...,v_n\}$ base di $V$ e $\mathcal{C} = \{u_1,...,u_n\}$ base di $W$
+Sia $V\xrightarrow{f} W$ lineare. Prendiamo $\mathscr{B} = \{v_2,...,v_n\}$ base di $V$ e $\mathscr{C} = \{u_1,...,u_n\}$ base di $W$
 \begin{definizione}
-    $M_{\mathcal{C}}^{\mathcal{B}}$: la matrice associata a $f$ è definita così:
+    $M_{\mathscr{C}}^{\mathscr{B}}$: la matrice associata a $f$ è definita così:
     \begin{equation}
-        M_{\mathcal{C}}^{\mathcal{B}} = A = (a_{ij})\in M_{m,n}(\mathbb{K})
+        M_{\mathscr{C}}^{\mathscr{B}} = A = (a_{ij})\in M_{m,n}(\mathbb{K})
     \end{equation}
 
-    Dove $A_j=X_{\mathcal{C}}(f(v_j))$, con $X_C(f(v_j)) :=$ colonna della $\mathcal{C}$-coordinata di $f(v_j)$
+    Dove $A_j=X_{\mathscr{C}}(f(v_j))$, con $X_C(f(v_j)) :=$ colonna della $\mathscr{C}$-coordinata di $f(v_j)$
 \end{definizione}
 
 \begin{esempio}
@@ -28,7 +28,7 @@ Sia $V\xrightarrow{f} W$ lineare. Prendiamo $\mathcal{B} = \{v_1,...,v_n\}$ base
     \end{gather}
     ...
     \begin{equation}
-        M_{\mathcal{C}}^{\mathcal{B}}(f)=\begin{bmatrix}
+        M_{\mathscr{C}}^{\mathscr{B}}(f)=\begin{bmatrix}
             0 & 1 & 0 \\
             0 & 1 & 2 \\
             0 & 0 & 1
@@ -41,9 +41,9 @@ Sia $V\xrightarrow{f} W$ lineare. Prendiamo $\mathcal{B} = \{v_1,...,v_n\}$ base
         V(\mathbb{E}^2)\xrightarrow{\rho_{\theta}} V(\mathbb{E}^2)
     \end{equation}
     Dove $\rho_{\theta}$ = "rotazione di angolo $\theta$" \\
-    $\mathcal{B} = \mathcal{C} = $ base di $V(\mathbb{E}^2)$, detta base \textit{ortonaturale} = $\{\underline{i}, \underline{j}\}$
+    $\mathscr{B} = \mathscr{C} = $ base di $V(\mathbb{E}^2)$, detta base \textit{ortonaturale} = $\{\underline{i}, \underline{j}\}$
     \begin{equation}
-        M_{\mathcal{B}}^{\mathcal{B}}(\rho_\theta) = \begin{bmatrix}
+        M_{\mathscr{B}}^{\mathscr{B}}(\rho_\theta) = \begin{bmatrix}
             \cos\theta & -\sin\theta \\
             \sin\theta & \cos\theta
         \end{bmatrix}
@@ -68,14 +68,14 @@ Sia $V\xrightarrow{f} W$ lineare. Prendiamo $\mathcal{B} = \{v_1,...,v_n\}$ base
 \begin{proposizione}
     Se $v\in V$
     \begin{equation}
-        X_{\mathcal{C}}(f(v))= M_{\mathcal{C}}^{\mathcal{B}}(f)\cdot X_{\mathcal{B}}(v)
+        X_{\mathscr{C}}(f(v))= M_{\mathscr{C}}^{\mathscr{B}}(f)\cdot X_{\mathscr{B}}(v)
     \end{equation}
 
     Praticamente se conosciamo la matrice associata ad $f$ conosciamo tutto di $f$
 \end{proposizione}
 
 \begin{dimostrazione}
-    Siano $X_{\mathcal{B}}(v)=\left[\begin{smallmatrix}
+    Siano $X_{\mathscr{B}}(v)=\left[\begin{smallmatrix}
         x \\ \vdots \\ x_n
     \end{smallmatrix}\right]$ \\
     Cioè $v=x_1v_1+...+x_nv_n$
@@ -85,7 +85,7 @@ Sia $V\xrightarrow{f} W$ lineare. Prendiamo $\mathcal{B} = \{v_1,...,v_n\}$ base
 
     Poniamo
     \begin{equation}
-        M_{\mathcal{C}}^{\mathcal{B}}(f) = (a_{ij})\in M_{n,m}
+        M_{\mathscr{C}}^{\mathscr{B}}(f) = (a_{ij})\in M_{n,m}
     \end{equation}
     \\
     Quindi
@@ -101,12 +101,12 @@ Sia $V\xrightarrow{f} W$ lineare. Prendiamo $\mathcal{B} = \{v_1,...,v_n\}$ base
     Dove ogni sommatoria è uguale all'$n$-esima riga di $A\ (A^n)\cdot X$. \\
     In conclusione:
     \begin{equation}
-        X_{\mathcal{C}}(f(v)) = \begin{bmatrix}
+        X_{\mathscr{C}}(f(v)) = \begin{bmatrix}
             A^1 \cdot X \\
             A^2 \cdot X \\
             \vdots \\
             A^n\cdot X
-        \end{bmatrix} = A\cdot x = M_{\mathcal{C}}^{\mathcal{B}}(f)X_{\mathcal{B}}(v)
+        \end{bmatrix} = A\cdot x = M_{\mathscr{C}}^{\mathscr{B}}(f)X_{\mathscr{B}}(v)
     \end{equation}
     C.V.D.
 \end{dimostrazione}
@@ -116,9 +116,9 @@ Sia $V\xrightarrow{f} W$ lineare. Prendiamo $\mathcal{B} = \{v_1,...,v_n\}$ base
 
 Siano $V,W$ spazi vettoriali / $\mathbb{K}$
 \begin{equation}
-    \mathcal{L}(V,W) = \{V\xrightarrow{f} W\ |\ f \text{ lineare}\}
+    \mathscr{L}(V,W) = \{V\xrightarrow{f} W\ |\ f \text{ lineare}\}
 \end{equation}
-Siano $f,g\in \mathcal{L}(V,W)$. Definiamo
+Siano $f,g\in \mathscr{L}(V,W)$. Definiamo
 \begin{notazione}
     \begin{gather}
         V\xrightarrow{f+g} W \\
@@ -129,14 +129,14 @@ Siano $f,g\in \mathcal{L}(V,W)$. Definiamo
         v\mapsto \underline{0}
     \end{gather}
 \end{notazione}
-$\mathcal{L}(V,W)$ con queste operazioni è uno spazio vettoriale / $\mathbb{K}$. L'elemento neutro è $\underline{0}$
+$\mathscr{L}(V,W)$ con queste operazioni è uno spazio vettoriale / $\mathbb{K}$. L'elemento neutro è $\underline{0}$
 
 \begin{proposizione}
     Ipotesi: $V,W$ finitamente generati, $\dim V = n$, $\dim W = m$ \\
-    Tesi: se $\mathcal{B}$ base di $V$, $\mathcal{C}$ base di $W$, l'applicazione
+    Tesi: se $\mathscr{B}$ base di $V$, $\mathscr{C}$ base di $W$, l'applicazione
     \begin{gather}
-        \mathcal{L}(V,W) \xrightarrow{M_{\mathcal{C}}^{\mathcal{B}}} M_{m,n}(\mathbb{K}) \\
-        f\mapsto M_{\mathcal{C}}^{\mathcal{B}}(f)
+        \mathscr{L}(V,W) \xrightarrow{M_{\mathscr{C}}^{\mathscr{B}}} M_{m,n}(\mathbb{K}) \\
+        f\mapsto M_{\mathscr{C}}^{\mathscr{B}}(f)
     \end{gather}
     È un isomorfismo.
 \end{proposizione}
@@ -152,34 +152,34 @@ $\mathcal{L}(V,W)$ con queste operazioni è uno spazio vettoriale / $\mathbb{K}$
     \end{equation}
     Lineari, con $U,V,W$ finitamente generati, e siano
     \begin{itemize}
-        \item $\mathcal{A} =$ base di $U$
-        \item $\mathcal{V} =$ base di $V$
-        \item $\mathcal{C} =$ base di $W$
+        \item $\mathscr{A} =$ base di $U$
+        \item $\mathscr{V} =$ base di $V$
+        \item $\mathscr{C} =$ base di $W$
     \end{itemize}
 
     Allora
     \begin{equation}
-        M_{\mathcal{C}}^{\mathcal{A}}(f\circ g) = M_{\mathcal{C}}^{\mathcal{B}}(f) \circ M_{\mathcal{B}}^{\mathcal{A}}(g)
+        M_{\mathscr{C}}^{\mathscr{A}}(f\circ g) = M_{\mathscr{C}}^{\mathscr{B}}(f) \circ M_{\mathscr{B}}^{\mathscr{A}}(g)
     \end{equation}
 \end{proposizione}
 
 \begin{dimostrazione}
     Sia $u\in U$.
     \begin{gather}
-        X_{\mathcal{C}}(f\circ g(u)) = X_{\mathcal{C}}(f(g(u))) \\
-        X_{\mathcal{C}}(f(v))=M_{\mathcal{C}}^{\mathcal{B}}(f)\circ X_{\mathcal{B}}(v) \\
+        X_{\mathscr{C}}(f\circ g(u)) = X_{\mathscr{C}}(f(g(u))) \\
+        X_{\mathscr{C}}(f(v))=M_{\mathscr{C}}^{\mathscr{B}}(f)\circ X_{\mathscr{B}}(v) \\
         \downarrow \\
-        X_{\mathcal{C}}(f(g(u))) = M_{\mathcal{C}}^{\mathcal{B}}(f) \cdot X_{\mathcal{B}}(g(u)) = M_{\mathcal{C}}^{\mathcal{B}}(f)\cdot M_{\mathcal{B}}^{\mathcal{A}}\cdot X_{\mathcal{A}}(u)
+        X_{\mathscr{C}}(f(g(u))) = M_{\mathscr{C}}^{\mathscr{B}}(f) \cdot X_{\mathscr{B}}(g(u)) = M_{\mathscr{C}}^{\mathscr{B}}(f)\cdot M_{\mathscr{B}}^{\mathscr{A}}\cdot X_{\mathscr{A}}(u)
     \end{gather}
     Quindi
     \begin{equation}
-        X_{\mathcal{C}}(f\circ g(u))=(M_{\mathcal{C}}^{\mathcal{B}}(f)\cdot M_{\mathcal{B}}^{\mathcal{A}}(g))\cdot X_{\mathcal{A}}(u)
+        X_{\mathscr{C}}(f\circ g(u))=(M_{\mathscr{C}}^{\mathscr{B}}(f)\cdot M_{\mathscr{B}}^{\mathscr{A}}(g))\cdot X_{\mathscr{A}}(u)
     \end{equation}
     Ma sappiamo che
     \begin{gather}
-        X_{\mathcal{C}}(f\circ g(u))=M_{\mathcal{C}}^{\mathcal{A}}(f\circ g)X_{\mathcal{A}}(u) \\
+        X_{\mathscr{C}}(f\circ g(u))=M_{\mathscr{C}}^{\mathscr{A}}(f\circ g)X_{\mathscr{A}}(u) \\
         \Downarrow \\
-        M_{\mathcal{C}}^{\mathcal{B}}(f)\cdot M_{\mathcal{B}}^{\mathcal{A}}(g)=M_{\mathcal{C}}^{\mathcal{A}}(f\circ g)
+        M_{\mathscr{C}}^{\mathscr{B}}(f)\cdot M_{\mathscr{B}}^{\mathscr{A}}(g)=M_{\mathscr{C}}^{\mathscr{A}}(f\circ g)
     \end{gather}
 \end{dimostrazione}
 
@@ -199,13 +199,13 @@ Trovare una base di
 
 Primo passo:
 \begin{dimostrazione}
-    Siano $\mathcal{B} = \{v_1,...,v_n\}$ e $\mathcal{C}= \{w_1,...,w_n\}$ basi di $V$ e $W$. Allora
+    Siano $\mathscr{B} = \{v_1,...,v_n\}$ e $\mathscr{C}= \{w_1,...,w_n\}$ basi di $V$ e $W$. Allora
     \begin{equation}
-        M^{\mathcal{B}}_{\mathcal{C}}(f) = A\in M_{m,n}(\mathbb{K})
+        M^{\mathscr{B}}_{\mathscr{C}}(f) = A\in M_{m,n}(\mathbb{K})
     \end{equation}
     E $\forall v\in V$
     \begin{equation}
-        X_{\mathcal{C}}(f(v))=A\cdot X_B(v)
+        X_{\mathscr{C}}(f(v))=A\cdot X_B(v)
     \end{equation}
 
     Ricordiamo che
@@ -250,9 +250,9 @@ Primo passo:
 
 \subsubsection{Lezione 7}
 \subsection{Diagonalizzazione}
-Sia $V \xrightarrow{f} V$ un applicazione lineare. $f$ è diagonalizzabile se $\exists \mathcal{B} = \{v_1,...,v_n\}$ base di $V$ tale che:
+Sia $V \xrightarrow{f} V$ un applicazione lineare. $f$ è diagonalizzabile se $\exists \mathscr{B} = \{v_1,...,v_n\}$ base di $V$ tale che:
 \begin{equation}
-    M_{\mathcal{B}}(f) = \begin{bmatrix}
+    M_{\mathscr{B}}(f) = \begin{bmatrix}
         \lambda_1 & 0 & ... & 0 & 0 \\
         0  & \lambda_2 & ...
     \end{bmatrix}
@@ -260,8 +260,8 @@ Sia $V \xrightarrow{f} V$ un applicazione lineare. $f$ è diagonalizzabile se $\
 
 Dato $\lambda \in \mathbb{K}$:
 \begin{gather}
-    V_{\lambda}(f) = \ker (\lambda Id_V - f) \subset V \rightarrow \\
-    V \xrightarrow{Id_V - f} V \\
+    V_{\lambda}(f) = \ker (\lambda \Id_V - f) \subset V \rightarrow \\
+    V \xrightarrow{\Id_V - f} V \\
     v \mapsto \lambda v-f(v)
 \end{gather}
 \begin{esempio}
@@ -271,7 +271,7 @@ Dato $\lambda \in \mathbb{K}$:
     \end{equation}
     Perché?
     \begin{equation}
-        M_{\mathcal{B}}^{\mathcal{B}} (\lambda Id - f) = M^{\mathcal{B}}_{\mathcal{B}}( \lambda Id_V ) - M^{\mathcal{B}}_{\mathcal{B}}(f)
+        M_{\mathscr{B}}^{\mathscr{B}} (\lambda \Id - f) = M^{\mathscr{B}}_{\mathscr{B}}( \lambda \Id_V ) - M^{\mathscr{B}}_{\mathscr{B}}(f)
     \end{equation}
     Se $\lambda \in \{\lambda_1,...,\lambda_n\},\ V_{\lambda}(f)\not=\{\underline{0}\}$. 
 \end{esempio}
@@ -293,7 +293,7 @@ Ricordiamo:
     è diagonalizzabile. Questo equivale a "$A$ è conuigata a una matrice diagonale". Inoltre:
     \begin{itemize}
         \item $\mathcal{S} =$ base standard di $\mathbb{K}$.
-        \item $\mathcal{B} =$ base che diagonalizza $L_A$.
+        \item $\mathscr{B} =$ base che diagonalizza $L_A$.
     \end{itemize}
     \begin{equation}
         \begin{bmatrix}
