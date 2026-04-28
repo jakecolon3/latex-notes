@@ -263,5 +263,124 @@ Si svolge in modo diverso in base alle radici del trinomio
 \subsubsection{Numeratore di grado maggiore del denominatore}
 Si svolge la divisione tra polinomi per ridurre ad un caso che sappiamo svolgere
 
+\subsubsection{Lezione 8}
+\section{Integrali Impropri}
+Finora abbiamo visto integrali di funzioni limitate su un intervallo chiuso. Ma cosa succede se $f$ non è limitata, o consideriamo un intervallo di integrazione illimitato?
+
+\begin{definizione}
+    Sia $f: [a, x_0) \to \mathbb{R}$ continua in $[a, x_0)$ con
+    \begin{equation*}
+    \lim_{x\to x_0^-}f = \pm\infty.
+    \end{equation*}
+    È ben definito l'integrale
+    \begin{equation*}
+        \int_{a}^{x_0 - \varepsilon} f(x) dx
+    \end{equation*}
+    Se $\lim_{\varepsilon\to 0^+}\int_{a}^{x_0 - \varepsilon} f(x) dx = l\in \mathbb{R} \text{ finito}$ allora $f$ è \textit{integrabile in senso improprio} in $[a, x_0)$ e
+    \begin{equation}
+        \int_{a}^{x_0} f(x) dx = l.
+    \end{equation}
+\end{definizione}
+
+\begin{corollario}
+    Analogamente per $g: (x_0, b] \to \mathbb{R}$ continua in $(x_0, b]$ e con $\lim_{x\to x_0+}g(x) =\pm\infty$, se
+    \begin{equation}
+        \lim_{\varepsilon\to 0+}\int_{x_0+\varepsilon}^{b} g(x) dx= l
+    \end{equation}
+    Allora
+    \begin{equation}
+        \int_{x_0}^{b} g(x) dx = l.
+    \end{equation}
+\end{corollario}
+
+\begin{esempio}
+    Prendiamo
+    \begin{equation}
+        f(x) = \frac{1}{(x_0-x)^\alpha}, x\in[a,x_0)
+    \end{equation}
+    Si ha che $\int_{a}^{x_0} f(x) dx$ è finito s.se $\alpha < 1$. (vedi dimostrazione)
+\end{esempio}
+
+\begin{osservazione}
+    Se $f \geq 0$ l'integrale improprio di $f$ o è finito o è infinito (come le serie).
+\end{osservazione}
+
+\begin{proprieta}[Criterio del Confronto]
+    Siano $f,g$ continue in $[a, x_0)$. Se $0\leq f(x)\leq g(x)\ \ \forall x\in [a, x_0)$, allora
+    \begin{equation}
+        0 \leq \int_{a}^{x_0} f(x) dx \leq \int_{a}^{x_0} g(x) dx
+    \end{equation}
+    Quindi, in particolare:
+    \begin{itemize}
+        \item Se $g$ è integrabile in senso improprio allora anche $f$ lo è.
+        \item Se l'integrale improprio di $f$ diverge, allora diverge anche quello di $g$.
+    \end{itemize}
+\end{proprieta}
+
+\begin{esempio}
+    \begin{equation}
+        f(x) = \frac{\sqrt{7-x}}{\sqrt{3-x}}
+    \end{equation}
+    $f$ è integrabile in $(1,3)$? L'unico problema è in $x_0=3$: $f$ non è limitata. Abbiamo che
+    \begin{equation}
+        0 \leq \frac{\sqrt{7-x}}{\sqrt{3-x}} \leq \frac{\sqrt{6}}{\sqrt{3-x}}
+    \end{equation}
+    Vediamo che $\frac{\sqrt{6}}{\sqrt{3-x}}$ è integrabile in $[1,3)$, dato che è della forma $\frac{1}{(x_0-x)^\alpha}$ con $\alpha < 1\ \ (\alpha = -1/2)$, quindi per il confronto anche $f$ è integrabile.
+\end{esempio}
+\leavevmode \\
+
+\begin{proprieta}[Criterio del Confronto Asintotico]
+    Sia $f$ continua in $[a,x_0),\ f\geq 0$. Con
+    \begin{equation}
+        \lim_{x\to x_0^-}(x_0-x)^\alpha f(x) = l \not= 0, \text{ finito}
+    \end{equation}
+    Allora
+    \begin{itemize}
+        \item Se $\alpha < 1$ $f$ è integrabile in senso improprio.
+        \item Se $\alpha \geq 1$ $f$ non è integrabile in senso improprio.
+    \end{itemize}
+\end{proprieta}
+
+\subsection{Integrale su Intervalli Illimitati}
+\begin{definizione}
+    Sia $f$ continua in $[a, +\infty)$ (oppure $(-\infty, b]$). Se esiste finito $\lim_{c\to +\infty}\int_{a}^{c} f(x) dx = F(c)$ si dice che $f$ è integrabile in senso improprio in $[a, +\infty)$, e si definisce
+    \begin{equation}
+        \int_{a}^{+\infty} f(x) dx = \lim_{c\to +\infty}\int_{a}^{c} f(x) dx.
+    \end{equation}
+    Questo limite può essere finito o infinito.
+\end{definizione}
+
+\begin{osservazione}
+    Se $f \geq 0$, allora $F(c)$ è monotona crescente.
+\end{osservazione}
+
+\begin{proprieta}[Criterio del Confronto]
+    Siano $f,g$ continue in $[a, +\infty)$, $0\leq f(x)\leq g(x)$.
+    Allora
+    \begin{equation}
+        0\leq \int_{a}^{+\infty} f(x) dx \leq \int_{a}^{+\infty} g(x) dx
+    \end{equation}
+    Quindi
+    \begin{itemize}
+        \item Se $\int_{a}^{+\infty} g(x) dx < +\infty$ allora $\int_{a}^{+\infty} f(x) dx < +\infty$.
+        \item Se $\int_{a}^{+\infty} f(x) dx = +\infty$ allora $\int_{a}^{+\infty} g(x) dx = +\infty$.
+    \end{itemize}
+\end{proprieta}
+
+\begin{proprieta}[Criterio del Confronto Asintotico]
+    Sia $f\in [a, +\infty)$ continua non negativa. Se
+    \begin{equation}
+        \lim_{x\to +\infty}x^\alpha f(x) = l\not= 0 \text{ finito}
+    \end{equation}
+    Allora
+    \begin{equation}
+        f(x) \approx \frac{1}{x^\alpha}.
+    \end{equation}
+    Quindi:
+    \begin{itemize}
+        \item Se $\alpha > 1$ $f$ è integrabile in senso improprio: $\int_{a}^{+\infty} f(x) dx < \infty$.
+        \item Se $\alpha \leq 1$ $f$ non è integrabile in senso improprio: $\int_{a}^{+\infty} f(x) dx = +\infty$.
+    \end{itemize}
+\end{proprieta}
 
 \end{document}

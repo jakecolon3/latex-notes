@@ -1,6 +1,5 @@
 *.*
 !.gitignore
-!*.pdf
 !*.tex
 !snippets.txt
 3b1b.*
