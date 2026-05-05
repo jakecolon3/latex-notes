@@ -1,0 +1,211 @@
+\input{../preamble.tex}
+
+\begin{document}
+
+\chapter{Equazioni differenziali}
+\section{Definizioni e basi}
+\subsubsection{Lezione 9}
+
+\begin{definizione}
+Le equazioni differenziali sono equazioni in cui l'incognita è \textit{una funzione}:
+\begin{equation*}
+    y(t): I \subseteq \mathbb{R} \to \mathbb{R}
+\end{equation*}
+\end{definizione}
+
+\leavevmode \\
+Questa funzione (?) risolve un'equazione in cui entrano in gioco le \textit{derivate} di $y(t)$. Il grado dell'equazione è la derivata di ordine più alto in cui compare $y(t)$.
+
+\begin{esempio}[Equazione di grado I]
+    \begin{equation*}
+        y'(t) = \cos(y(t)) + y(t) e^t
+    \end{equation*}
+\end{esempio}
+\begin{esempio}[Equazione di grado II]
+    \begin{equation*}
+        y'' = y
+    \end{equation*}
+    Ha tra le sue soluzioni $e^x$ e $e^{-x}$.
+\end{esempio}
+
+\begin{definizione}
+    Un equazione è \textit{normale} se ha questa forma:
+    \begin{equation*}
+        y^{(n)} = f(t, y(t), y'(t), y''(t), ..., y^{n-1}(t)).
+    \end{equation*}
+    Le equazioni normali hanno sicuramente soluzione.
+\end{definizione}
+
+\subsection{Risolvere eq. Differenziali}
+Prendiamo l'equazione:
+\begin{equation*}
+    y'(t)=f(t)
+\end{equation*}
+Questa è un equazione differenziale in forma normale, e sappiamo già risolverla: basta trovare una primitiva.
+\begin{gather*}
+    y'(t) = \cos(t) \\
+    y(t) = \int \cos(t)dt \\
+    = \sin(t) + c
+\end{gather*}
+Ma questa non è l'unica soluzione; infatti quest'equazione ha \textit{infinite} soluzioni.
+
+\begin{esempio}
+    \begin{gather*}
+        y'(t) = e^{-t^2} \\
+        y(t) = \int_{a}^{t} e^{-s^2} ds
+    \end{gather*}
+    Questa equazione ha infinite soluzioni al variare di $a$.
+\end{esempio}
+
+\begin{osservazione}
+    In generale, le soluzioni delle equazioni differenziali non sono uniche.
+\end{osservazione}
+
+\begin{proprieta}
+Per avere unicità per equazioni differenziali del primo ordine in forma normale, serve una condizione iniziale:
+\begin{equation}
+    \begin{cases}
+        y't = f(t, y(t)) \\
+        y(t_0) = y_0
+    \end{cases}
+\end{equation}
+In questo caso, se $f$ è regolare esiste una soluzione ed è unica.
+\end{proprieta}
+
+\begin{esempio}
+    \begin{equation}
+        \begin{cases}
+            y' = \cos(t) \\
+            y(0) = 1
+        \end{cases}
+    \end{equation}
+    Ha 1 soluzione: $\sin(t)+1$.
+\end{esempio}
+
+\begin{proprieta}
+    $y(t)$ è una quantità che aumenta e diminuisce in proporzione a se stessa. Cioè la sua variazione nel tempo è proporzionale al suo valore precedente (?):
+    \begin{gather*}
+        y(t+\Delta t) - y(t) = \lambda y(t)\Delta t \\
+        \frac{y(t+\Delta t) - y(t)}{\Delta t} = \lambda y(t) \\
+        \xrightarrow{\Delta t \to 0} y'(t) = \lambda y(t)
+    \end{gather*}
+    Questa proprietà ha molte applicazioni (es. crescita di una popolazione).
+\end{proprieta}
+
+\begin{esempio}
+    \begin{equation*}
+        y(t) = e^{\lambda t} \\
+    \end{equation*}
+    La derivata di questa funzione risolve l'equazione differenziale:
+    \begin{equation*}
+        y'(t) = \lambda e^{\lambda t} = \lambda y(t)
+    \end{equation*}
+    Ma anche questa ha infinite soluzioni. Vediamo quindi che per far senso delle eq. differenziali ci serve una condizione di partenza:
+    \begin{gather*}
+        \begin{cases}
+            y'(t) = 5y(t) \\
+            y(1) = 2
+        \end{cases} \\
+        y(t) = k^{5t} \\
+        y(1) = 2 \\
+        ke^2 = 2 \\
+        k =  \frac{2}{e^5} \\
+        k = 2e^{-5} \\
+        y(t) = 2e^{-5}e^{5t}.
+    \end{gather*}
+\end{esempio}
+
+Vediamo il caso particolare in cui $y(0) = y_0$:
+\begin{gather*}
+    \begin{cases}
+    y' = \lambda y \\
+    y(0) = y_0
+    \end{cases} \\
+    y(t) = ke^{\lambda t} \\
+    y(0) = 0 \\
+    y(t) = ke^0 = k \\
+    k = y_0 \\
+    y(t) = y_0 e^{\lambda t} ??
+\end{gather*}
+
+Vediamo ora il caso in cui la costante di crescita è una funzione:
+\begin{gather*}
+    y'(t) = \lambda(t) y(t) \\
+    y(t + \Delta t) - y(t) = \lambda(t)y(t)\Delta t
+\end{gather*}
+Ma come la risolviamo? Dobbiamo trovare una funzione la cui derivata contiene se stessa e la variabile:
+\begin{equation*}
+    y'(t) = ty(t)
+\end{equation*}
+Sicuramente sarà del tipo
+\begin{equation*}
+    y(t) = e^{\Lambda (t)}
+\end{equation*}
+Ma $\Lambda$ deve essere una primitiva di $t$:
+\begin{gather*}
+    \Lambda(t) = \int \lambda(t) dt \\
+    = \frac{t^2}{2} \to \\
+    \to y(t) = e^{\frac{t^2}{2}}
+\end{gather*}
+Quindi:
+\begin{gather}
+    y(t) = k e^{\Lambda(t)} \\
+    \Lambda(t) = \int \lambda(t) dt.
+\end{gather}
+Per risolvere $y'(t) = \lambda(t)y(t)$:
+\begin{align}
+    &\begin{cases}
+        y'(t) = \lambda(t)y(t) \\
+        y(t_0) = y_0
+    \end{cases} \\
+    &\begin{cases}
+        y(t) = ke^{\Lambda(t)} \\
+        y(t_0) = y_0 \to \text{ trova } k
+    \end{cases} \\
+    &\text{Con } \Lambda(t) = \int \lambda(t)dt
+\end{align}
+
+\begin{dimostrazione}
+    Dimostriamo che questa è l'unica soluzione.
+    \begin{equation*}
+        y(t) = ke^{\Lambda(t)}
+    \end{equation*}
+    Sia $w(t)$ una qualsiasi soluzione. Abbiamo:
+    \begin{gather*}
+        f(t) = w(t)e^{-\Lambda(t)} \\
+        f'(t) = w'(t)e^{-\Lambda(t)} + w(t)(-\Lambda'(t))e^{-\Lambda(t)} = \\
+        = e^{-\Lambda(t)}[w'(t)-\lambda(t)w(t)] = 0 \text{ mi sono perso perché} \\
+        f'(t) = 0 \to f(t) = k \\
+        k = w(t)e^{-\Lambda(t)} \\
+        w(t) = ke^{\Lambda(t)}.
+    \end{gather*}
+\end{dimostrazione}
+
+\begin{definizione}
+    Le equazioni della forma
+    \begin{equation*}
+        y'(t) = \lambda(t)y(t)
+    \end{equation*}
+    Sono dette \textit{equazioni lineari omogenee}, e si risolvono come abbiamo visto:
+    \begin{gather*}
+        y(t) = ke^{\Lambda(t)} \\
+        \Lambda(t) = \int \lambda(t)dt
+    \end{gather*}
+\end{definizione}
+
+\begin{definizione}
+    Un equazione è \textit{lineare non omogenea} se è del tipo:
+    \begin{equation}
+        y' = \lambda(t)y(t) + b(t)
+    \end{equation}
+    Con $b(t) \not= 0$.
+\end{definizione}
+Sia \bar{y}(t) una soluzione di (4.). Presa una qualsiasi altra soluzione $y(t)$, cosa soddisfa $y(t) = \bar{y}(t)$?
+\begin{gather*}
+    w(t) = y(t) - \bar{y}(t) \\
+    ... \\
+    y'(t) = \lambda(t)(y(t)-\bar{y}(t)) = \lambda(t) w(t)
+\end{gather*}
+Che sappiamo risolvere: $w(t) = ke^{\Lambda(t)} = y(t) - \bar{y}(t)$. Possiamo quindi trovare un'altra soluzione di un eq. omogenea se ne abbiamo una prima.
+
+\end{document}
