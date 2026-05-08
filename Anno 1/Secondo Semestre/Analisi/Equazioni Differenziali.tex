@@ -200,12 +200,93 @@ Per risolvere $y'(t) = \lambda(t)y(t)$:
     \end{equation}
     Con $b(t) \not= 0$.
 \end{definizione}
-Sia \bar{y}(t) una soluzione di (4.). Presa una qualsiasi altra soluzione $y(t)$, cosa soddisfa $y(t) = \bar{y}(t)$?
+Sia $\bar{y}(t)$ una soluzione di (4.). Presa una qualsiasi altra soluzione $y(t)$, cosa soddisfa $y(t) = \bar{y}(t)$?
 \begin{gather*}
     w(t) = y(t) - \bar{y}(t) \\
     ... \\
     y'(t) = \lambda(t)(y(t)-\bar{y}(t)) = \lambda(t) w(t)
 \end{gather*}
 Che sappiamo risolvere: $w(t) = ke^{\Lambda(t)} = y(t) - \bar{y}(t)$. Possiamo quindi trovare un'altra soluzione di un eq. omogenea se ne abbiamo una prima.
+
+\subsubsection{Lezione 10}
+\subsection{Risolvere equazioni non omogenee}
+\begin{definizione}
+    Un'equazione differenziale del primo ordine è lineare *non omogenea* se è del tipo:
+    \begin{equation}
+        y' = \lambda(t) y + b(t)
+    \end{equation}
+    Con $b(t) \not= 0$.
+\end{definizione}
+
+Tutte le soluzioni si ottengono con:
+\begin{equation}
+    y(t) = ke^{\Lambda(t)} + \bar{y}(t)
+\end{equation}
+Dove $\bar{y}(t)$ è una soluzione particolare dell'eq. Per ottenere una soluzione particolare si ???
+
+\begin{problema}
+    Determinare $B(t)$ t.c.
+    \begin{align*}
+        &\bar{y}(t) = B(t) e^{\Lambda(t)} \\
+        &\bar{y'}(t) = B'(t) e^{\Lambda(t)} + B(t) \Lambda'(t) e^{\Lambda(t)} \\
+        =& B'(t) e^{\Lambda(t)} + B(t) \lambda(t)e^{\Lambda(t)} \\
+        =& \lambda(t)(B(t)e^{\Lambda(t)}) + b(t) \\
+        & B'(t)e^{\Lambda(t)} = b(t) \\
+        & B'(t) = \frac{b(t)}{e^{\Lambda(t)}} = b(t)e^{-\Lambda(t)} \\
+        & B(t) = \int b(t)e^{-\Lambda(t)} \\
+    \end{align*}
+\end{problema}
+
+Soluzione generale:
+\begin{equation}
+    y(t) = ke^{\Lambda(t)} + B(t)e^{\Lambda(t)} = e^{\Lambda(t)}[k+B(t)]\ \ \forall k\in \mathbb{R}
+\end{equation}
+
+Quindi per risolvere $y' = \lambda(t) \cdot y + b(t)$ servono solo 2 integrali:
+\begin{enumerate}
+    \item Si trova $\Lambda(t) = \int \lambda(t) dt$
+    \item Si trova $B(t) = \int b(t)e^{-\Lambda(t)} dt$
+    \item Le soluzioni sono $y(t) = e^{\Lambda(t)}[k+B(t)]\ \ \forall k\in \mathbb{R}$
+\end{enumerate}
+
+\subsubsection{Metodo di somiglianza}
+C'è un altro metodo per trovare $\bar{y}(t)$, applicabile se $\lambda(t) = \lambda$, cioè se $\lambda$ è *costante*, e se $b(t)$ è un polinomio, un esponenziale o un seno/coseno. Questo metodo non richede di calcolare integrali:
+\begin{enumerate}
+    \item Se $\lambda \not = 0$ e $b(t)$ è un polinomio di grado $m$ allora cerco $\bar{y}(t)$ come polinomio dello stesso grado. (non so come spiegarlo ha fatto un esempio) \\
+        (sostituisci il $\bar{y}$ trovato nell'eq iniziale)
+    \item Se $b(t) = Me^{mt}$ e $\lambda \not= m$, con $\lambda, m, M$ fissati allora $\bar{y}(t)=c_1e^{mt}$.
+    \item Se $y' = \lambda y + M \cos(\alpha t)$ e $b(t) = \cos(\alpha t)$ o $\sin(\alpha t)$ allora $\bar{y}(t) = c_1\cos(\alpha t) + c_2\sin(\alpha t)$.
+\end{enumerate}
+
+\section{Equazioni Lineari del Secondo Grado}
+\begin{definizione}
+    Le equazioni lineari del secondo grado sono del tipo:
+    \begin{equation}
+        y'' + a(t)y'(t)+b(t)y(t) = f(t).
+    \end{equation}
+    Se $f(t)=0$ si dice lineare omogenea.
+\end{definizione}
+\leavevmode \\
+Cercheremo le soluzioni di eq. II grado dove $a(t)$ e $b(t)$ sono costanti.
+\begin{proprieta}
+    Se $a,b,f \in C(I)$ e $f(t)\equiv 0$, in questo caso se si trovano $y_1$ e $y_2$ che soddisfano l'eq. omogenea e non sono proporzionali (la "stessa" soluzione), tutte le soluzioni dell'eq. omogenea sono del tipo
+    \begin{equation}
+        y(t) = c_1y_1(t) + c_2y_2(t)\ \ \text{ con $c_1, c_2$ costanti generiche.}
+    \end{equation}
+\end{proprieta}
+
+\subsection{Risolvere eq. II grado}
+\begin{itemize}
+    \item Se $f(t) \not \equiv 0$ allore bisogna cercare $\bar{y}(t)$ soluzione particolare dell'eq. completa. Trovata $\bar{y}$, tutte le soluzioni saranno del tipo
+        \begin{equation}
+            y''(t)=c_1y_1(t)+c_2y_2(t) + \bar{y}(t)\ \ c_1, c_2\in \mathbb{R}
+        \end{equation}
+        dove $y_1, y_2$ soddisfano l'eq. omogenea.
+\end{itemize}
+
+\begin{osservazione}
+    Nelle eq. di I grado per trovare una soluzione particolare bastava imporre 1 condizione iniziale, ma per le eq. di II grado serve imporre 2 condizioni: per esempio per calcolare il movimento di un oggetto nel tempo bisogna conoscere la sua velocità iniziale e la sua posizione iniziale. ($F = ma$ è di II grado perché $a$ è la derivata seconda della posizione)
+\end{osservazione}
+
 
 \end{document}
