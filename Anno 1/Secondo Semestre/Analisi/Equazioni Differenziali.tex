@@ -264,7 +264,7 @@ C'è un altro metodo per trovare $\bar{y}(t)$, applicabile se $\lambda(t) = \lam
     \begin{equation}
         y'' + a(t)y'(t)+b(t)y(t) = f(t).
     \end{equation}
-    Se $f(t)=0$ si dice lineare omogenea.
+    Se $f(t)\equiv 0$ si dice lineare omogenea.
 \end{definizione}
 \leavevmode \\
 Cercheremo le soluzioni di eq. II grado dove $a(t)$ e $b(t)$ sono costanti.
@@ -276,17 +276,96 @@ Cercheremo le soluzioni di eq. II grado dove $a(t)$ e $b(t)$ sono costanti.
 \end{proprieta}
 
 \subsection{Risolvere eq. II grado}
-\begin{itemize}
-    \item Se $f(t) \not \equiv 0$ allore bisogna cercare $\bar{y}(t)$ soluzione particolare dell'eq. completa. Trovata $\bar{y}$, tutte le soluzioni saranno del tipo
-        \begin{equation}
-            y''(t)=c_1y_1(t)+c_2y_2(t) + \bar{y}(t)\ \ c_1, c_2\in \mathbb{R}
-        \end{equation}
-        dove $y_1, y_2$ soddisfano l'eq. omogenea.
-\end{itemize}
-
+\subsubsection{Equazioni non omogenee}
+Se $f(t) \not \equiv 0$ allore bisogna cercare $\bar{y}(t)$ soluzione particolare dell'eq. completa. Trovata $\bar{y}$, tutte le soluzioni saranno del tipo
+\begin{equation}
+    y''(t)=c_1y_1(t)+c_2y_2(t) + \bar{y}(t)\ \ c_1, c_2\in \mathbb{R}
+\end{equation}
+dove $y_1, y_2$ soddisfano l'eq. omogenea associata, ovvero:
+\begin{equation}
+    y''(t) + c(t)y'(t) + b(t)y(t) = 0
+\end{equation}
+e $\bar{y}$ è una soluzione particolare dell'equazione.
 \begin{osservazione}
     Nelle eq. di I grado per trovare una soluzione particolare bastava imporre 1 condizione iniziale, ma per le eq. di II grado serve imporre 2 condizioni: per esempio per calcolare il movimento di un oggetto nel tempo bisogna conoscere la sua velocità iniziale e la sua posizione iniziale. ($F = ma$ è di II grado perché $a$ è la derivata seconda della posizione)
 \end{osservazione}
+
+\subsubsection{Equazioni omogenee}
+Per $f(t) \equiv 0$ ci conviene riprendere la funzione esponenziale sui complessi:
+\begin{gather*}
+     \text{Con }\lambda \in \mathbb{C}\ \ \ h(t) = e^{\lambda t} = e^{\lambda_1 t}(\cos(\lambda_2 t) + i\sin(\lambda_2 t)) \\
+    \text{Si può dimostrare che: } h'(t) = \lambda e^{\lambda t} \text{ come nei reali.}
+\end{gather*}
+
+\begin{equation}
+    y''(t) + a(t)y'(t) + b(t)y(t) = 0
+\end{equation}
+Preso
+\begin{gather*}
+    z(t): I\subseteq \mathbb{R}\longrightarrow \mathbb{C} \\
+    z(t) = z_1(t) + iz_2(t)
+\end{gather*}
+Se $z(t)$ risolve (1.16)
+\begin{gather*}
+    z'(t) = z'_1(t) + iz'_2(t) \\
+    z''(t) = z''_1(t) + iz''_2(t) \\
+    z''(t) + a(t)z' + b(t)z = 0 \\
+    z''_1(t) + iz''_2(t) + a(t)(z'(t) + iz_2'(t))+b(t)(z_1(t)+iz_2(t)) = 0 \\
+    [z_1''(t)+a(t)z_1'(t)+b(t)z_1(t)] + i[z''_2(t)+a(t)z'_2(t)+b(t)z_2(t)] = 0 \\
+\end{gather*}
+Questo è vero s.se entrambe le quadre sono 0 cioè risolvono l'eq come funzioni reali. \\
+Quindi trovata 1 soluzione complessa che risolve l'eq trovo \textit{2 soluzioni} nel campo reale ($z_1$ e $z_2$). \\
+Però noi possiamo solo risolvere equazioni dove $a$ e $b$ sono costanti:
+\begin{equation*}
+    y''(t)+ay'(t)+by(t)=0
+\end{equation*}
+Applicando quello che abbiamo visto, dobbiamo cercare soluzioni del tipo
+\begin{gather*}
+    z(t) = e^{\lambda t}\ \ \ \lambda\in \mathbb{C} \\
+    z'(t) = \lambda e^{\lambda t} \\
+    z''(t) = \lambda^2e^{\lambda t}
+\end{gather*}
+nel campo complesso. Quindi:
+\begin{gather*}
+    z''+az'+bz = 0 \\
+    \lambda^2e^{\lambda t}a \lambda^{\lambda t}+ be^{\lambda t} = 0 \\
+    e^{\lambda t}[\lambda^2 + a \lambda + b] = 0
+\end{gather*}
+
+Per trovare le soluzioni dell'equazione differenziale di secondo ordine basta trovare le soluzioni dell'equazione di secondo grado nelle quadre:
+\begin{equation}
+    \lambda = \frac{-a \pm \sqrt{a^2 - 4ab}}{2} = \begin{cases}
+        \Delta > 0 & \lambda_1, \lambda_2 \text{ soluzioni reali} \\
+        \Delta = 0 & \lambda_1 = \lambda_2 \text{ soluzione reale} \\
+        i\Delta < 0 & \lambda_1, \lambda_2 = \mu \pm iv \text{ soluzioni complesse}
+    \end{cases}
+\end{equation}
+Queste saranno le soluzioni dell'equazione.
+
+\begin{esempio}
+    \begin{equation}
+        y''+y' - 6y = 0
+    \end{equation}
+    Dobbiamo risolvere:
+    \begin{gather*}
+        \lambda^2 + \lambda - 6 = 0 \\
+        \lambda = \frac{-1 \pm \sqrt{1+2 \cdot 4}}{2} = \begin{cases}
+            \frac{-1 + 5}{2} = 2 \\
+            \frac{-1 - 5}{2} = -3
+        \end{cases}
+    \end{gather*}
+    Le soluzioni sono quindi
+    \begin{align*}
+        \lambda_2 &= -3 & \lambda_2 &= 2 \\
+           &\downarrow    &    &\downarrow \\
+           &e^{-3t} &    &e^{2t}
+    \end{align*}
+    Cioè
+    \begin{equation}
+        y(t)=c_1e^{-3t}+c_2e^{2t}.
+    \end{equation}
+\end{esempio}
+
 
 
 \end{document}
