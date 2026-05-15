@@ -366,6 +366,120 @@ Queste saranno le soluzioni dell'equazione.
     \end{equation}
 \end{esempio}
 
+\subsubsection{Lezione 11}
+\section{Convergenza di integrali non limitati}
+Sia $f$ continua in $[a, x_0)$ t.c.
+\begin{equation*}
+    \lim_{x\to x_0}f(x)(x_0-x)^{\alpha}=l\not=0
+\end{equation*}
+Abbiamo 2 possibilità:
+\begin{equation}
+    \begin{cases}
+        \int_{a}^{x_0} f(t) dt \text{ converge se }\alpha<1\\
+        \int_{a}^{x_0} f(t) dt \text{ diverge se }\alpha \geq 1
+    \end{cases}
+\end{equation}
+Per una $f$ continua in $(x_0, b]$ tipo
+\begin{equation*}
+    \lim_{x\to x_0}f(x)(x-x_0)^{\alpha}=l\not=0
+\end{equation*}
+Allora
+\begin{equation}
+    \begin{cases}
+        \int_{x_0}^{b} f(t) dt \text{ diverge se }\alpha<1\\
+        \int_{x_0}^{b} f(t) dt \text{ converge se }\alpha \geq 1
+    \end{cases}
+\end{equation}
+Praticamente applichiamo il criterio del confronto asintotico per determinare la convergenza di un integrale
+
+\begin{esempio}
+    \begin{equation*}
+        \int_{\pi}^{4} \frac{\log(x-3)}{x^3-8x^2+16x} dx
+    \end{equation*}
+    Questa funzione è definita per
+    \begin{align*}
+        &\log: x>3 \\
+        &\text{Denominatore: } x(x^2-8x+16) = 0 \to x \not= 0, x \not= 4
+    \end{align*}
+    E vediamo che per $x\to4$ la funzione diventa $\frac{0}{0}$.\\
+    Scriviamo il numeratore come
+    \begin{gather*}
+        \log(x-3)=\log(1+(x-4)) \\
+        \frac{\log(x-3)}{x-4}= \frac{\log(1+(x-4))}{x-4} \xrightarrow{x-4} 1 \text{   perché:}\\
+        \frac{log(1+t)}{t} \xrightarrow{t\to0}0
+    \end{gather*}
+    Abbiamo quindi
+    \begin{equation*}
+        f(x) = ...
+    \end{equation*}
+\end{esempio}
+
+Sia $f$ continua in $[a, +\infty)$. Quanto cresce velocemente? Per il criterio del confronto asintotico:
+\begin{gather}
+    \lim_{x\to +\infty}f(x)x^{\alpha} = l\not=0 \begin{cases}
+        \alpha > 1 & \text{ Converge} \\
+        \alpha \leq 1 &\text{ Diverge}
+    \end{cases} \\
+    f(x) \approx \frac{1}{x^\alpha}
+\end{gather}
+
+\begin{osservazione}
+    Prendiamo
+    \begin{equation}
+        \int_{a}^{+\infty} f(x) dx
+    \end{equation}
+    Se $\lim_{x\to +\infty}f(x)=l\not=0$ allora \textit{l'integrale non può convergere} $\to \int_{a}^{+\infty} f(x) dx=+\infty$. Per capire perché basta ricordarsi che l'integrale è l'area del sottografico: se $f$ non tende a 0 l'area sotto il grafico è ovviamente infinita. \\
+    Comunque questa condizione non è sufficiente:
+    \begin{gather*}
+        \int_{2}^{+\infty} \frac{dx}{x\log x} dx \\
+        f(x) = \frac{1}{x \log x} \xrightarrow{x\to+\infty}0 \\
+        t = \log x;\ \ dt = \frac{dx}{x} \\
+        \int_{\log 2}^{+\infty} \frac{dt}{t} = \lim_{M\to +\infty}\int_{\log 2}^{M} \frac{dt}{t} = \lim_{M\to +\infty}(\log M-\log(\log2)) = +\infty.
+    \end{gather*}
+\end{osservazione}
+
+\begin{esempio}
+    Studiamo la convergenza di
+    \begin{equation}
+        \int_{0}^{+\infty} e^{-x^2} dx
+    \end{equation}
+    $f(x) = e^{-x^2}$ continua in $[0, +\infty)$.
+    \begin{gather*}
+        \lim_{x\to +\infty}e^{-x^2}=0 \text{ non basta} \\
+        \lim_{x\to +\infty}x^2e^{-x^2} = \lim_{x\to +\infty} \frac{x^2}{e^{x^2}} \xrightarrow{t=x^2} \lim_{t\to +\infty} \frac{t}{e^t} = 0 \\
+        0\leq x^2e^{-x^2}\leq c \mapsto e^{-x^2}\leq \frac{c}{x^2}\ \forall x\geq 1
+    \end{gather*}
+    Ma l'integrale parte da 0, quindi
+    \begin{equation*}
+        \int_{0}^{+\infty} e^{-x^2} dx = \int_{0}^{1} e^{-x^2} dx + \int_{1}^{+\infty} e^{-x^2} dx
+    \end{equation*}
+    boh
+    \begin{equation}
+        \int_{0}^{+\infty} e^{-x^2} dx = \frac{\sqrt{\pi}}{2} \text{ "integrale di Gauss"}
+    \end{equation}
+\end{esempio}
+
+\subsection{Convergenza assoluta}
+Per le funzioni con segno variabile si studia
+\begin{equation}
+    \int_{a}^{+\infty} |f(x)| dx = \int_{a}^{+\infty} g(x)\geq 0\ dx
+\end{equation}
+Ricordiamo:
+\begin{equation*}
+    \left|\int_{a}^{+\infty} f(x) dx\right| \leq \int_{a}^{+\infty} |f(x)| dx
+\end{equation*}
+Quindi se $\int_{a}^{+\infty} |f(x)| dx$ converge allora $\int_{a}^{+\infty} f(x) dx$ converge.
+
+\begin{esempio}
+    \begin{gather*}
+        \int_{0}^{+\infty} e^{-x}\cos(x^3) dx \to \\
+        \to \int_{0}^{+\infty} |e^{-x}\cos(x^3)| dx \\
+        |e^{-x}\cos(x^3)| \leq e^{-x} \text{ che è integrabile} = \lim_{M\to +\infty}\int_{0}^{M} e^{-x} dx=-e^{-m}+1 \\
+        \lim_{M\to +\infty}-e^{-M}+1=1 \\
+    \end{gather*}
+    Quindi per il confronto $|e^{-x}\cos(x^3)$ è integrabile.
+\end{esempio}
+
 
 
 \end{document}
