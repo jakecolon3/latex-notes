@@ -337,7 +337,7 @@ Per trovare le soluzioni dell'equazione differenziale di secondo ordine basta tr
     \lambda = \frac{-a \pm \sqrt{a^2 - 4ab}}{2} = \begin{cases}
         \Delta > 0 & \lambda_1, \lambda_2 \text{ soluzioni reali} \\
         \Delta = 0 & \lambda_1 = \lambda_2 \text{ soluzione reale} \\
-        i\Delta < 0 & \lambda_1, \lambda_2 = \mu \pm iv \text{ soluzioni complesse}
+        i\Delta < 0 & \lambda_1, \lambda_2 = \gamma \pm i\mu \text{ soluzioni complesse}
     \end{cases}
 \end{equation}
 Queste saranno le soluzioni dell'equazione.
@@ -480,6 +480,103 @@ Quindi se $\int_{a}^{+\infty} |f(x)| dx$ converge allora $\int_{a}^{+\infty} f(x
     Quindi per il confronto $|e^{-x}\cos(x^3)$ è integrabile.
 \end{esempio}
 
+\subsubsection{Lezione 12}
+\subsection{Equazioni Lineari del Secondo Grado non Omogenee}
+
+\begin{equation}
+    y'' + ay'+by = c(t)
+\end{equation}
+
+Dobbiamo trovare una soluzione particolare $\bar{y}$.
+\begin{itemize}
+    \item Primo metodo: variazione delle costanti
+        \begin{gather*}
+            \bar{y}(t) = c_1(t)y_1(t) + c_2(t) + y_2(t) \\
+            \downarrow \\
+            \text{Sostituisci $\bar{y}(t)$ nell'eq. e trova $c_1(t)$ e } c_2(t)
+        \end{gather*}
+        Non usare questo metodo.
+    \item Secondo metodo: metodo di somiglianza:
+\end{itemize}
+
+Se $c(t)$ ha delle forme particolari
+\begin{enumerate}
+    \item Se $c(t)$ è un polinomio $P_n(t)$ e $b\not=0$ si cerca $\bar{y}(t) = Q_n(t)$ polinomio dello stesso grado. $Q_n(t)$ dipende da $n+1$ coefficienti. Lo si sostituisce nell'eq. e si impone che sia soluzione.
+    \begin{esempio}
+        \begin{equation}
+            y''+2y'-3y=3+9t
+        \end{equation}
+        Cerco $\bar{y}(t)$ soluzione particolare
+        \begin{gather*}
+            y(t) = c_1y_1(t)+c_2y_2(t)+\bar{y}(t) \\
+            \bar{y}(t) = Q_1(t) = At+B \text{ grado 1 perché }c(t) = 3+9t = P_1(t) \\
+            \bar{y}'(t) = A;\ \bar{y}''(t) = 0 \\
+            \text{Imponiamo } \bar{y}''+ 2 \bar{y}' - 3 \bar{y}= 3 + 9t: \\
+            0+2A-3(At+B) = 3+9t \\
+            2A -3B-3At=3+9t \\
+            \begin{cases}
+                2A-3B=3 & \to B=-3\\
+                -3A=9 & \to A=-3
+            \end{cases} \\
+            \bar{y}(t) = -3t-3. \\
+            \text{Possiamo poi trovare $y'', y'$ risolvendo }\lambda^2 + 2\lambda-3=0 (?).
+        \end{gather*}
+    \end{esempio}
+
+    Nel caso in cui abbiamo un equazione del tipo
+    \begin{equation}
+        y''+ay'=P_n(t)
+    \end{equation}
+    cioè dove il termine di grado 0 è nullo, bisogna trovare $\bar{y}(t)=tQ_n(t)$ (alza il grado).
+    \begin{esempio}
+        \begin{gather*}
+            y''+ay'=-g\ \ \ P_0(t)=-g \\
+            \bar{y}(t) = tQ_0(t)=At \\
+            \bar{y}'=A;\ \ y''=0 \\
+            0+aA=-g\to A=\frac{-g}{a}. \\
+            y''+ay'=0 \\
+            \lambda^2+ a \lambda = 0\to \lambda = 0;\ \ \lambda=-a\\
+            y_1(t)=e^{0t}=1 \\
+            y_2(t)=e^{-at} \\
+            y''+ay'=-g \longrightarrow y(t)=c_1+c_2e^{-at}- \frac{g}{a}t
+        \end{gather*}
+    \end{esempio}
+
+    \item La forzante è un'esponenziale: $c(t)=Ae^{\alpha t}$ e $\alpha$ non è soluzione dell'equazione fondamentale
+    \begin{equation*}
+        y''+ay'+by=Ae^{\alpha t}
+    \end{equation*}
+    Allora $\bar{y}(t)=A_1e^{\alpha t}$. Se $\alpha$ risolve allora $\bar{y}(t)=tA_1e^{\alpha t}$.
+    \begin{esempio}
+        \begin{gather*}
+            y''-3y'+5y=15e^{3t} \\
+            \lambda^2 -3 \lambda+5 = 0\\
+            \lambda = ... \\
+            \bar{y}(t)=A_1e^{3t};\ \ \bar{y}'(T)=3A_1e^{3t};\ \ \bar{y}''(t)=9A_1e^{ft} \\
+            9A_1e^{3t}-3(3A_1e^{3t})+5A_1e^{3t}=15e^{3t} \\
+            ... \\
+            A_1=3\longrightarrow \bar{y}(t)=3e^{3t}
+        \end{gather*}
+    \end{esempio}
+
+    \item La forzante è una trigonometrica: $c(t)=A\cos(5t)$ o $A\sin(5t)$. Se $i\beta$ non è soluzione di $\lambda^2+a\lambda+5=0$ ovvero $a=0$ e $b=\beta^2$ allora:
+    \begin{equation*}
+        \bar{y}(t)=A_1\cos(\beta t)+A_2\sin(\beta t) \longrightarrow y''+ay'+by=A\cos(\beta t)
+    \end{equation*}
+    \begin{esempio}
+        \begin{gather*}
+            y''-ay=2\cos(2t)\ \ \beta = 2 (* i\text{ non è soluzione}) \\
+            \bar{y}(t)=A_1\cos(2t)+A_2\sin(2t) \\
+            (\text{In questo caso potremmo omettere il seno dato che manca il termine di primo grado}) \\
+            \bar{y}'=-2A_1\sin(2t)+2A_2\cos(2t) \\
+            \bar{y}''=-4A_1\cos(2t)-4A_2\sin(2t) \\
+            -4A_1\cos(2t)-4A_2\sin(2t)-4A_1\cos(t)-A_2\sin(2t)=2\cos(2t) \\
+            ... \\
+            A_1 = -\frac14;\ \ A_2=0 \\
+            c_1e^{-2t}+c_2e^{2t}- \frac{1}{4}\cos(2t)
+        \end{gather*}
+    \end{esempio}
+\end{enumerate}
 
 
 \end{document}
