@@ -33,20 +33,22 @@ Questa funzione (?) risolve un'equazione in cui entrano in gioco le \textit{deri
     \begin{equation*}
         y^{(n)} = f(t, y(t), y'(t), y''(t), ..., y^{n-1}(t)).
     \end{equation*}
-    Le equazioni normali hanno sicuramente soluzione.
+    Le equazioni normali hanno sicuramente soluzione. Per trovare una soluzione specifica bisogna imporre $n$ condizioni.
 \end{definizione}
 
-\subsection{Risolvere eq. Differenziali}
+\subsection{Risolvere eq. Differenziali Lineari}
 Prendiamo l'equazione:
 \begin{equation*}
     y'(t)=f(t)
 \end{equation*}
 Questa è un equazione differenziale in forma normale, e sappiamo già risolverla: basta trovare una primitiva.
-\begin{gather*}
-    y'(t) = \cos(t) \\
-    y(t) = \int \cos(t)dt \\
-    = \sin(t) + c
-\end{gather*}
+\begin{esempio}
+    \begin{gather*}
+        y'(t) = \cos(t) \\
+        y(t) = \int \cos(t)dt \\
+        = \sin(t) + c
+    \end{gather*}
+\end{esempio}
 Ma questa non è l'unica soluzione; infatti quest'equazione ha \textit{infinite} soluzioni.
 
 \begin{esempio}
@@ -258,9 +260,9 @@ C'è un altro metodo per trovare $\bar{y}(t)$, applicabile se $\lambda(t) = \lam
     \item Se $y' = \lambda y + M \cos(\alpha t)$ e $b(t) = \cos(\alpha t)$ o $\sin(\alpha t)$ allora $\bar{y}(t) = c_1\cos(\alpha t) + c_2\sin(\alpha t)$.
 \end{enumerate}
 
-\section{Equazioni Lineari del Secondo Grado}
+\section{Equazioni Lineari del Secondo Ordine}
 \begin{definizione}
-    Le equazioni lineari del secondo grado sono del tipo:
+    Le equazioni lineari del secondo ordine sono del tipo:
     \begin{equation}
         y'' + a(t)y'(t)+b(t)y(t) = f(t).
     \end{equation}
@@ -275,7 +277,7 @@ Cercheremo le soluzioni di eq. II grado dove $a(t)$ e $b(t)$ sono costanti.
     \end{equation}
 \end{proprieta}
 
-\subsection{Risolvere eq. II grado}
+\subsection{Risolvere eq. II ordine}
 \subsubsection{Equazioni non omogenee}
 Se $f(t) \not \equiv 0$ allore bisogna cercare $\bar{y}(t)$ soluzione particolare dell'eq. completa. Trovata $\bar{y}$, tutte le soluzioni saranno del tipo
 \begin{equation}
@@ -291,13 +293,14 @@ e $\bar{y}$ è una soluzione particolare dell'equazione.
 \end{osservazione}
 
 \subsubsection{Equazioni omogenee}
+Al contrario delle eq. di primo ordine, non c'è un metodo standard per risolvere le equazioni lineari omogenee del secondo ordine. Possiamo solo dire che ce troviamo 2 soluzioni non proporzionali $y_1, y_2$ allora tutte le soluzioni saranno del tipo $y(t)=c_1y_1(t)+c_2y_2(t)$. Possiamo però risolverle se $a(t)$ e $b(t)$ sono costanti. \\
 Per $f(t) \equiv 0$ ci conviene riprendere la funzione esponenziale sui complessi:
 \begin{gather*}
      \text{Con }\lambda \in \mathbb{C}\ \ \ h(t) = e^{\lambda t} = e^{\lambda_1 t}(\cos(\lambda_2 t) + i\sin(\lambda_2 t)) \\
     \text{Si può dimostrare che: } h'(t) = \lambda e^{\lambda t} \text{ come nei reali.}
 \end{gather*}
 
-\begin{equation}
+\begin{equation}\label{omogenea}
     y''(t) + a(t)y'(t) + b(t)y(t) = 0
 \end{equation}
 Preso
@@ -305,7 +308,7 @@ Preso
     z(t): I\subseteq \mathbb{R}\longrightarrow \mathbb{C} \\
     z(t) = z_1(t) + iz_2(t)
 \end{gather*}
-Se $z(t)$ risolve (1.16)
+Se $z(t)$ risolve \ref{omogenea}
 \begin{gather*}
     z'(t) = z'_1(t) + iz'_2(t) \\
     z''(t) = z''_1(t) + iz''_2(t) \\
@@ -577,6 +580,170 @@ Se $c(t)$ ha delle forme particolari
         \end{gather*}
     \end{esempio}
 \end{enumerate}
+
+\subsection{Richiamo}
+
+\subsubsection{Risolvere eq. non omogenee}
+Per risolvere un eq. non omogenea si studia prima l'eq. omogenea associata e poi si cercano soluz. particolari.
+\begin{itemize}
+    \item Primo ordine \\
+        Soluzione generale:
+        \begin{gather*}
+            y(t) = ky_1(t)+ \bar{y}(t) = k_1e^{\Lambda(t)}+ \bar{y}(t) \\
+            \bar{y}(t)=B(t)e^{\Lambda(t)} \\
+            B(t)=\int e^{\Lambda(t)}f(t)dt
+        \end{gather*}
+        Quindi la formula per queste equazioni è
+        \begin{equation}
+            y(t)=(k+B(t))e^{\Lambda(t)}\ \ \forall k\in \mathbb{R}
+        \end{equation}
+    \item Secondo ordine \\
+        Soluzione generale:
+        \begin{gather*}
+            y(t)=c_1y_1(t)+c_2y_2(t)+ \bar{y}(t) \\
+            \bar{y}(t)=c_1(t)y_1(t)+c_2(t)y_2(t)
+        \end{gather*}
+        Si può trovare ma servono tanti conti \\
+\end{itemize}
+Se l'equazione è a coefficienti costanti e $f(t)$ ha una forma particolare allora si può usare il metodo di somiglianza:
+\begin{itemize}
+    \item $f(t)=P_n(t)$
+        \begin{equation*}
+            \bar{y}(t)=Q_n(t)
+        \end{equation*}
+        Lo si trova imponendo che sia soluzione.
+    \item $f(t)=Ae^{\alpha t}$
+        \begin{equation*}
+            \bar{y}(t)=A_1e^{\alpha t}
+        \end{equation*}
+    \item $f(t)=A\cos(\alpha t)$ o $A\sin(\alpha t)$
+        \begin{equation*}
+            \bar{y}(t)=A_1\cos(\alpha t)+A_2\sin(\alpha t)
+        \end{equation*}
+\end{itemize}
+
+\subsection{Esempi}
+\begin{esempio}
+    Metodo di somiglianza per eq. di secondo ordine con forzante polinomiale
+    \begin{gather*}
+        y''+2y'-3y=3+9t \\
+        P_n(T)=3+9t \\
+        \bar{y}(t)=Q_1(t)=At+B \\
+        \text{Sostituisci nell'eq. iniziale e imponi l'identità}\\
+        A=-3;\ \ B=-3
+    \end{gather*}
+\end{esempio}
+\begin{esempio}
+    Metodo di somiglianza per eq. di secondo ordine con forzante esponenziale
+    \begin{gather*}
+        y''=3y'+5y=15e^{3t} \\
+        \bar{y}(t)=A_1e^{3t} \\
+        \lambda^{2}-3 \lambda +5=0 \\
+        \lambda_1, \lambda_2 = ... \\
+        A_1 = 3
+    \end{gather*}
+\end{esempio}
+\begin{esempio}
+    Metodo di somiglianza per eq. di secondo ordine con forzante trigonometrica
+    \begin{gather*}
+        y''-4y=2\cos(2t) \\
+        \bar{y}(t)=A_1\cos(2t)+A_2\sin(2t) \\
+        2i \text{ non risolve } \lambda^2-4=0 \\
+        \text{boh non ho capito} \\
+        \bar{y}(t)=- \frac14\cos(2t)
+    \end{gather*}
+\end{esempio}
+
+\subsubsection{Lezione 13}
+\begin{esempio}
+    \begin{equation}
+        \begin{cases}
+            y'+9y=5e^{4t} \\
+            y(0)=0y'(0)=1
+        \end{cases}
+    \end{equation}
+    Primo passo: risolvere eq. omogenea
+    \begin{gather*}
+        y''+9y=0 \\
+        \lambda^2+9=0;\ \ \lambda=\pm 3i \\
+        \text{Soluzione omogenea: }c_1\cos(3t)+c_2\sin(3t)
+    \end{gather*}
+    Secondo passo: risolvere non omogenea con forzante esponenziale $f(t)=5e^{4t}$
+    \begin{gather*}
+        \bar{y}(t)=A_1e^{4t} \\
+        \bar{y}'(t)=4A_1e^{4t} \\
+        \bar{y}''(t)=16A_1e^{4t} \\
+        16A_1e^{4t}+9A_1e^{4t}=5e^{4t} \\
+        25A_1e^{4t}=5e^{4t} \\
+        A_1= \frac{1}{5} \\
+    y(t)=c_1\cos(3t)+c_2\sin(3t)+ \frac{1}{5}e^{4t}
+    \end{gather*}
+    Poi risolviamo il problema di Cauchy
+    \begin{gather*}
+        y(0)=0 \\
+        y(0) = c_1\cos(0) + c_2\sin(0) + \frac{1}{5}e^{0} = c_1+ \frac{1}{5}=0 \\
+        y'(t)=-3c_1\sin(3t)+3c_2\cos(3t)+ \frac{4}{5}e^{4t} \\
+        y'(0)=3c_2+ \frac{4}{5} = 1 \\
+        \begin{cases}
+            c_1= \frac{1}{5}=0 \\
+            3c_2+ \frac{4}{5}=1
+        \end{cases} \\
+        c_1 = - \frac{1}{5};\ \ c_2= \frac{1}{15}
+    \end{gather*}
+    Quindi la soluzione particolare è
+    \begin{equation}
+        y(t)=- \frac{1}{5}\cos(3t)+ \frac{1}{15}\sin(3t)+ \frac{1}{5}e^{4t}.
+    \end{equation}
+\end{esempio}
+\begin{esempio}
+    \begin{equation}
+        \begin{cases}
+            y''-5y'+4y=\sin(t) \\
+            y(0)= \frac{5}{34} \\
+            y'(0)=0
+        \end{cases}
+    \end{equation}
+    Eq. omogenea
+    \begin{gather*}
+        y''-5y'+4y=0 \\
+        \lambda^2-5 \lambda+4 = 0 \\
+        \lambda = \frac{5\pm\sqrt{25-16}}{2} = 4;\ 1 \\
+        y(t)=c_1e^t+c_2e^{4t}
+    \end{gather*}
+    Eq. non omogenea con forzante trigonometrica $f(t)=\sin(t)$ \\
+    Non c'è risonanza perché la forzante non risolve l'omogenea
+    \begin{gather*}
+        \bar{y}(t)=A_1\cos(t)+A_2\sin(t) \\
+        \bar{y}'(t)=-A_1\sin(t)+A_2\cos(t) \\
+        \bar{y}''(t)=-A_1\cos(t)-A_2\sin(t) \\
+        -A_1\cos(t)-A_2\sin(t) -5(-A_1\sin(t)+A_2\cos(t))+\\
+        +4(A_1\cos(t)+A_2\sin(t)) = \sin(t) \\
+        \begin{cases}
+            -A_1-5A_2+4A_1=0 \\
+            -A_2+5A_1+4A_2=1
+        \end{cases} \\
+        A_2 = \frac{3}{34};\ \ A_1= \frac{5}{34}
+    \end{gather*}
+    Soluzione generale
+    \begin{gather*}
+        y(t)=c_1e^t+c_2e^{4t}+ \frac{5}{34}\cos(t) + \frac{3}{34}\sin(t) \\
+        y(0)=c_1+c_2+ \frac{5}{34}= \frac{5}{34} \\
+        y'(t) = c_1e^t+4c_2e^{4t}- \frac{5}{34}\sin(t)+ \frac{3}{34}\cos(t) \\
+        y'(0) = c_1+4c_2+ \frac{3}{34}=0 \\
+        \begin{cases}
+            c_1+c_2 = 0 \\
+            c_2+4c_2 + \frac{3}{34} = 0
+        \end{cases}
+    \end{gather*}
+    Soluzione del problema di Cauchy
+    \begin{gather}
+        \begin{cases}
+            c_1 = \frac{1}{34} \\
+            c_2 = - \frac{1}{34}
+        \end{cases} \\
+        y(t) = \frac{1}{34}e^t - \frac{1}{34}e^{4t}+ \frac{5}{34}\cos(t)+ \frac{3}{34}\sin(t)
+    \end{gather}
+\end{esempio}
 
 
 \end{document}
